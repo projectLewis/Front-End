@@ -14,7 +14,7 @@ function Register(props) {
   }
 
     useEffect(() => {
-        console.log("in useEffect, newUser", newUser)
+        console.log("in useEffect: newUser", newUser)
     if (newUser) {
       axios
         .post(
