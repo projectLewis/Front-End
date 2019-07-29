@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 
@@ -44,6 +45,9 @@ function Login(props) {
           onChange={e => setPassword(e.target.value)}
         />
         <button>Login</button>
+        <button type="button">
+          <Link to="/register">Register</Link>
+        </button>
       </form>
     </div>
   );
