@@ -14,7 +14,6 @@ function Login(props) {
   }
 
   useEffect(() => {
-    console.log("in useEffect: newUser", user);
     if (user) {
       axios
         .post("https://better-reads-db.herokuapp.com/api/auth/login", user)
@@ -24,9 +23,10 @@ function Login(props) {
           setUsername("");
           setPassword("");
         })
+        .then(res => props.history.push("/"))
         .catch(err => console.log(err));
     }
-  }, [user]);
+  }, [props.history, user]);
 
   return (
     <div>
