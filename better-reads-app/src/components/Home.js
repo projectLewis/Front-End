@@ -8,6 +8,7 @@ function Home(props) {
   const [searchTerm, setSearchTerm] = useState(null);
   function handleSubmit(e) {
     e.preventDefault();
+    setSearchTerm(searchInput);
   }
   function handleChanges(e) {
     setSearchInput(e.target.value);
