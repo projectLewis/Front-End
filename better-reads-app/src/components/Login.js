@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 
@@ -17,11 +17,11 @@ function Login(props) {
     console.log("in useEffect: newUser", user);
     if (user) {
       axios
-        .post(
-          "https://better-reads-db.herokuapp.com/api/auth/login",
-          user,
-        )
-        .then(res => console.log("res", res))
+        .post("https://better-reads-db.herokuapp.com/api/auth/login", user)
+        .then(res => {
+          console.log("login successful, res is:", res);
+          localStorage.setItem("token", res.data.token);
+        })
         .catch(err => console.log(err));
     }
   }, [user]);
@@ -41,7 +41,7 @@ function Login(props) {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button>Register</button>
+        <button>Login</button>
       </form>
     </div>
   );
