@@ -6,25 +6,25 @@ function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // const newUser = { username, password };
-  const [newUser, setNewUser] = useState(null);
+  const [user, setUser] = useState(null);
 
   function handleRegister(e) {
     e.preventDefault();
-    setNewUser({ username, password });
+    setUser({ username, password });
   }
 
   useEffect(() => {
-    console.log("in useEffect: newUser", newUser);
-    if (newUser) {
+    console.log("in useEffect: newUser", user);
+    if (user) {
       axios
         .post(
-          "https://better-reads-db.herokuapp.com/api/auth/register",
-          newUser,
+          "https://better-reads-db.herokuapp.com/api/auth/login",
+          user,
         )
         .then(res => console.log("res", res))
         .catch(err => console.log(err));
     }
-  }, [newUser]);
+  }, [user]);
 
   return (
     <div>
