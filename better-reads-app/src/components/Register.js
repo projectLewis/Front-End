@@ -21,7 +21,11 @@ function Register(props) {
           "https://better-reads-db.herokuapp.com/api/auth/register",
           newUser,
         )
-        .then(res => console.log("res", res))
+        .then(res => {
+          console.log("res", res)
+          setUsername("")
+          setPassword("")
+        })
         .catch(err => console.log(err));
     }
   }, [newUser]);
