@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function Register(props) {
+function Register({history}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // const newUser = { username, password };
@@ -10,10 +11,10 @@ function Register(props) {
 
   function handleRegister(e) {
     e.preventDefault();
-      setNewUser({ username, password });
+    setNewUser({ username, password });
   }
 
-    useEffect(() => {
+  useEffect(() => {
     if (newUser) {
       axios
         .post(
@@ -21,13 +22,14 @@ function Register(props) {
           newUser,
         )
         .then(res => {
-          console.log("res", res)
-          setUsername("")
-          setPassword("")
+          console.log("res", res);
+          setUsername("");
+          setPassword("");
         })
+        .then(history.push("/login"))
         .catch(err => console.log(err));
     }
-  }, [newUser]);
+  }, [newUser, history]);
 
   return (
     <div>
@@ -35,16 +37,23 @@ function Register(props) {
         <input
           name="username"
           placeholder="username"
+          required
           value={username}
           onChange={e => setUsername(e.target.value)}
         />
         <input
           name="password"
           placeholder="password"
+          type="password"
+          required
+          minLength="8"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
         <button>Register</button>
+        <button type="login">
+          <Link to="/login">Login</Link>
+        </button>
       </form>
     </div>
   );
