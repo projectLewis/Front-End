@@ -1,5 +1,5 @@
 [build]
-base = "/"
+base = "better-reads-app/"
 publish = "/build/"
 command = "yarn build"
 
