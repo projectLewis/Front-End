@@ -30,14 +30,14 @@ function Login(props) {
 
   return (
     <div>
-      <form onSubmit={handleRegister}>
-        <input
+      <form className='form' onSubmit={handleRegister}>
+        <input className="input"
           name="username"
           placeholder="username"
           value={username}
           onChange={e => setUsername(e.target.value)}
         />
-        <input
+        <input className="input"
           name="password"
           placeholder="password"
           value={password}

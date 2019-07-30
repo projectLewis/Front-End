@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+// import { Button } from 'semantic-ui-react';
 
 import axios from "axios";
 
@@ -26,14 +27,24 @@ function Home(props) {
   }, [searchTerm]);
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
+      <form className="form" onSubmit={handleSubmit}>
+        <input className="input"
           name="description"
           placeholder="Search.."
           value={searchInput}
           onChange={handleChanges}
         />
         <button>Search</button>
+        <div>
+          <input type="radio" name="search" value="description"
+         checked />
+          <label for="description">Description</label>
+        </div>
+
+        <div>
+          <input type="radio" name="search" value="author" />
+          <label for="author">Author</label>
+        </div>
       </form>
     </div>
   );
@@ -42,3 +53,4 @@ function Home(props) {
 Home.propTypes = {};
 
 export default Home;
+

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 
+
 function Register(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -31,14 +32,14 @@ function Register(props) {
 
   return (
     <div>
-      <form onSubmit={handleRegister}>
-        <input
+      <form className="form" onSubmit={handleRegister}>
+        <input className="input"
           name="username"
           placeholder="username"
           value={username}
           onChange={e => setUsername(e.target.value)}
         />
-        <input
+        <input className="input"
           name="password"
           placeholder="password"
           value={password}
