@@ -14,8 +14,8 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Route exact path="/" component={Home} />
       <Route path="/" component={Nav} />
+      <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <PrivateRoute exact path="/saved_books" component={SavedBooks} />

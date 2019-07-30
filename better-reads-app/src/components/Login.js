@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
+import { Input } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 function Login(props) {
   const [username, setUsername] = useState("");
@@ -31,23 +33,23 @@ function Login(props) {
 
   return (
     <div>
-      <form onSubmit={handleRegister}>
-        <input
+      <form className="form" onSubmit={handleRegister}>
+        <Input className="input"
           name="username"
           placeholder="username"
           value={username}
           onChange={e => setUsername(e.target.value)}
         />
-        <input
+        <Input className="input"
           name="password"
           placeholder="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button>Login</button>
-        <button type="button">
+        <Button>Login</Button>
+        <Button type="button">
           <Link to="/register">Register</Link>
-        </button>
+        </Button>
       </form>
     </div>
   );

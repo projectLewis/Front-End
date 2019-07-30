@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Book({ title, cover, description }) {
+function Book({ book }) {
   return (
     <>
-      {title}
-      {cover}
-      {description}
+      <div>{book.title}</div>
+      {book.author}
+      {book.image}
+
     </>
   );
 }
