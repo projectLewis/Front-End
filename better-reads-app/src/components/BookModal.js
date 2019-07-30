@@ -1,11 +1,18 @@
-import React from "react";
+import React,{useEffect} from "react";
 import ReactDOM from "react-dom";
 import { Button, Header, Image, Modal } from 'semantic-ui-react';
+import Axios from "axios";
 
 
 const BookModal = (props) => {
+    // const [isbn, setIsbn] = useState(0)
+    // useEffect(() => {
+    //     if (isbn) {
+    //        Axios.get()
+    //    }
+    // }, [input])
     return (
-        <Modal trigger={<Button>Show Modal</Button>}>
+        <Modal open>
         <Modal.Header>Select a Photo</Modal.Header>
         <Modal.Content image>
         <Image wrapped size='medium' src='/images/avatar/large/rachel.png' />
@@ -19,4 +26,4 @@ const BookModal = (props) => {
     )
 }
 
-export default BookModal; 
+export default BookModal;
