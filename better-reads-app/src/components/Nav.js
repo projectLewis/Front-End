@@ -5,11 +5,12 @@ import PropTypes from "prop-types";
 function Nav(props) {
   return (
     <div>
-      {localStorage.getItem("token") && (
+      
         <nav>
-          <Link to="/saved_books" />
+          {localStorage.getItem("token") && (<div><Link to="/login">Login</Link>
+          <Link to="/register">Register</Link></div>)}
+          <Link to="/">Search</Link>
         </nav>
-      )}
     </div>
   );
 }
