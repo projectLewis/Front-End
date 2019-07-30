@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Button } from 'semantic-ui-react';
-import { Input } from 'semantic-ui-react';
-import { Checkbox } from 'semantic-ui-react';
+import { Button, Input, Checkbox } from 'semantic-ui-react';
 
 import axios from "axios";
 import RecommendedBooks from "./RecommendedBooks";
@@ -11,7 +9,7 @@ function Home(props) {
   const [searchInput, setSearchInput] = useState("");
   const [searchTerm, setSearchTerm] = useState(null);
   const [recommendedBooks, setRecommendedBooks] = useState([
-    
+
       {
         "title": "The Bell Jar",
         "author": "Sylvia Plath",
@@ -36,7 +34,7 @@ function Home(props) {
         "image": "https://covers.openlibrary.org/b/isbn/0896086135-M.jpg",
         "isbn": "0896086135"
       }
-  
+
   ]);
   function handleSubmit(e) {
     e.preventDefault();
@@ -66,15 +64,15 @@ function Home(props) {
           onChange={handleChanges}
         />
         <Button>Search</Button>
-        
+
         <div>
           <Checkbox name="search" name="search" value="author" />
           <label for="author">Search by author only</label>
         </div>
       </form>
       {recommendedBooks.length === 0 ? (
-        <div>Search something!</div> 
-        
+        <div>Search something!</div>
+
       ) : (
         <RecommendedBooks recommendedBooks={recommendedBooks}/>
       )}
@@ -85,4 +83,3 @@ function Home(props) {
 Home.propTypes = {};
 
 export default Home;
-
