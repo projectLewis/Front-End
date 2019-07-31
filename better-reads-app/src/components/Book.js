@@ -1,28 +1,29 @@
-import React,{useState} from "react";
-import {
-  Card,
-  Image,
-  Container,
-  Modal,
-  Button,
-} from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
+import { Card, Image, Container, Modal, Button, Icon } from "semantic-ui-react";
+import Axios from "axios";
 import PropTypes from "prop-types";
 import BookModal from "./BookModal";
 
 function Book({ book }) {
   // think about what to do for images that don't exist as they are truthy
 
-  const [isModalOpen, setModalOpen] = useState(false)
-  function openModal(){
-    setModalOpen(true)
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {}, []);
+
+  function addToSavedList(book) {
+    Axios.post("https://better-reads-db.herokuapp.com/api/books/save/:userid",{})
+    .then()
   }
-  function closeModal(){
-    setModalOpen(false)
+
+  function openModal() {
+    setModalOpen(true);
+  }
+  function closeModal() {
+    setModalOpen(false);
   }
   return (
-
-
-    <Container >
+    <Container>
       {/* <Modal trigger={
       <BookModal />} > */}
       <Card onClick={openModal} centered style={{ margin: "30px auto" }}>
@@ -30,21 +31,25 @@ function Book({ book }) {
         <Card.Content>
           <Card.Header>{book.title}</Card.Header>
           <Card.Meta>{book.author}</Card.Meta>
+          {}
+          <Icon className="heart" />
+          <Icon className="heart outline" onClick={addToSavedList}/>
         </Card.Content>
       </Card>
 
       {/* </Modal> */}
-      <Modal size={'medium'} open={isModalOpen} onClose={closeModal}>
+      <Modal size={"medium"} open={isModalOpen} onClose={closeModal}>
         <Modal.Header>More info</Modal.Header>
         <Modal.Content>
-            <BookModal isbn={book.isbn} />
+          <BookModal isbn={book.isbn} />
         </Modal.Content>
         <Modal.Actions>
-            <Button negative onClick={closeModal}>Close</Button>
+          <Button negative onClick={closeModal}>
+            Close
+          </Button>
         </Modal.Actions>
       </Modal>
     </Container>
-
   );
 }
 

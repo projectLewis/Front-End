@@ -54,6 +54,7 @@ function Home(props) {
         .catch(err => console.log(err));
     }
   }, [searchTerm]);
+
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
