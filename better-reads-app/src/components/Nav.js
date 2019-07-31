@@ -21,6 +21,11 @@ function Nav(props) {
             Search Books
           </Button>
         </Link>
+        {localStorage.getItem("token") && <Link to="/saved_books">
+          <Button className="button-nav" type="search">
+            Saved Books
+          </Button>
+        </Link>}
 
 
 
