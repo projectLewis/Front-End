@@ -52,9 +52,9 @@ function Register({history}) {
           onChange={e => setPassword(e.target.value)}
         />
         <Button>Register</Button>
-        <Button type="login">
-          <Link to="/login">Login</Link>
-        </Button>
+        <div>Already have an Account? 
+          <Link to="/login"> Login</Link>
+        </div>
       </form>
     </div>
   );
