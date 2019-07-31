@@ -21,6 +21,7 @@ function Book({ book }) {
   }
   return (
 
+
     <Container >
       {/* <Modal trigger={
       <BookModal />} > */}

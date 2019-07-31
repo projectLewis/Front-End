@@ -34,9 +34,11 @@ function Register({history}) {
   }, [newUser, history]);
 
   return (
-    <div>
+    <>
       <BookReadSvg style={{height: '400px'}}/>
+    <div className="buttons">
       <form className="form" onSubmit={handleRegister}>
+      <div className="inputForm">
         <Input className="input"
           name="username"
           placeholder="username"
@@ -44,7 +46,9 @@ function Register({history}) {
           value={username}
           onChange={e => setUsername(e.target.value)}
         />
-        <Input className="input"
+        </div>
+        <div className="inputForm">
+        <Input className="inputForm"
           name="password"
           placeholder="password"
           type="password"
@@ -53,12 +57,18 @@ function Register({history}) {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
+
+        </div>
+        <div>
+      </div>
         <Button>Register</Button>
         <div>Already have an Account? 
           <Link to="/login"> Login</Link>
+
         </div>
       </form>
     </div>
+  </>
   );
 }
 

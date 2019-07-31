@@ -33,15 +33,20 @@ function Login(props) {
   }, [props.history, user]);
 
   return (
-    <div>
+    <>
       <BookLoverSvg style={{height: '400px'}}/>
+
+     <div className="buttons">
       <form className="form" onSubmit={handleRegister}>
+        <div className="inputForm">
         <Input className="input"
           name="username"
           placeholder="username"
           value={username}
           onChange={e => setUsername(e.target.value)}
         />
+        </div>
+        <div className="inputForm">
         <Input className="input"
           name="password"
           placeholder="password"
@@ -49,15 +54,20 @@ function Login(props) {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <Button>Login</Button>
+        </div>
+        <div className="button">
+          <Button>Login</Button>
+        </div>
         <div> Don't have an account yet?
           <Link to="/register"> Register</Link>
         </div>
       </form>
     </div>
+    </>
   );
 }
 
 Login.propTypes = {};
 
 export default Login;
+
