@@ -3,7 +3,6 @@ import Book from "./Book";
 
 function RecommendedBooks({ recommendedBooks }) {
   console.log(recommendedBooks)
-
   return (
     <div className='bookFlexWrapper' style={{
       display: 'flex',
@@ -17,7 +16,5 @@ function RecommendedBooks({ recommendedBooks }) {
     </div>
   );
 }
-
-RecommendedBooks.propTypes = {};
 
 export default RecommendedBooks;
