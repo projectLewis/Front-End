@@ -56,16 +56,15 @@ function Home(props) {
   }, [searchTerm]);
 
   useEffect(() => {
-    const userId = localStorage.getItem("user_id")
-      axios
-        .get("insert url here", searchTerm)
-        .then(res => {
-          console.log("get search request successful, res is:", res);
-          setSearchTerm("");
-        })
-        .catch(err => console.log(err));
-
-  }, [searchTerm]);
+    const userId = localStorage.getItem("user_id");
+    axios
+      .get(`https://better-reads-db.herokuapp.com/api/users/${userId}`)
+      .then(res => {
+        console.log("get user's savedBooks successful, res is:", res);
+        setSavedBookList()
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   return (
     <div>
