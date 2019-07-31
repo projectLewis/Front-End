@@ -24,12 +24,12 @@ function Book({ book }) {
     setModalOpen(false);
   }
   return (
-    <Container>
+    <Container style={{width: 'auto', marginBottom: '20px'}} >
       {/* <Modal trigger={
       <BookModal />} > */}
-      <Card onClick={openModal} centered style={{ margin: "30px auto" }}>
-        <Image style={{ width: "100%" }} src={`${book.image}`} />
-        <Card.Content>
+      <Card onClick={openModal} centered>
+        <Image style={{ height: '350px', width: "100%" }} src={`${book.image}`} />
+        <Card.Content style={{maxHeight:'300px'}}>
           <Card.Header>{book.title}</Card.Header>
           <Card.Meta>{book.author}</Card.Meta>
           {}
