@@ -24,7 +24,7 @@ const BookModal = ({isbn}) => {
         <>
             <div>{book.description}</div>
             <div>{book.pageCount} pages</div>
-            <div>Rating: {book.averageRating}/5</div>
+            {book.averageRating ? <div>Rating: {book.averageRating}/5</div> : null}
             <div>Maturity Rating: {book.maturityRating}</div>
         </>
     )

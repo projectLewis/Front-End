@@ -4,6 +4,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { Input } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
+import { ReactComponent as YourSvg } from '../imgs/undraw_book_lover_mkck.svg'
 
 function Login(props) {
   const [username, setUsername] = useState("");
@@ -33,6 +34,7 @@ function Login(props) {
 
   return (
     <div>
+      <YourSvg style={{height: '400px', fill: 'red'}}/>
       <form className="form" onSubmit={handleRegister}>
         <Input className="input"
           name="username"
