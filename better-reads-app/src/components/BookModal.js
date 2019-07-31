@@ -1,6 +1,4 @@
 import React,{useState, useEffect} from "react";
-import ReactDOM from "react-dom";
-import { Button, Header, Image, Modal } from 'semantic-ui-react';
 import Axios from "axios";
 
 
@@ -11,8 +9,7 @@ const BookModal = ({isbn}) => {
            Axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
                 .then(data=>{
                     addBook(data.data.items[0].volumeInfo.description)
-                }
-                )
+                })
        }
     }, [isbn])
 

@@ -20,7 +20,6 @@ function App() {
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <PrivateRoute exact path="/saved_books" component={SavedBooks} />
-      <Route exact path="/book/:id" component={BookModal} />
     </div>
   );
 }
