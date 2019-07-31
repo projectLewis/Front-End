@@ -42,7 +42,7 @@ function Book({ book }) {
         <Modal.Actions>
             <Button negative onClick={closeModal}>Close</Button>
         </Modal.Actions>
-      </Modal>`
+      </Modal>
     </Container>
 
   );
