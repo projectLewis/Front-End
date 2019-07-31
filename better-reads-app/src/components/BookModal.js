@@ -1,18 +1,23 @@
-import React,{useEffect} from "react";
+import React,{useState, useEffect} from "react";
 import ReactDOM from "react-dom";
 import { Button, Header, Image, Modal } from 'semantic-ui-react';
 import Axios from "axios";
 
 
 const BookModal = ({isbn}) => {
-    // const [isbn, setIsbn] = useState(0)
-    // useEffect(() => {
-    //     if (isbn) {
-    //        Axios.get()
-    //    }
-    // }, [input])
+    const [book, addBook] = useState()
+    useEffect(() => {
+        if (isbn) {
+           Axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
+                .then(data=>{
+                    addBook(data.data.items[0].volumeInfo.description)
+                }
+                )
+       }
+    }, [isbn])
+
     return (
-        <div>{isbn}</div>
+        <div>{book}</div>
     )
 }
 
