@@ -5,9 +5,7 @@ import {
   Container,
   Modal,
   Button,
-  Header,
 } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import BookModal from "./BookModal";
 
@@ -41,7 +39,7 @@ function Book({ book }) {
             <BookModal isbn={book.isbn} />
         </Modal.Content>
         <Modal.Actions>
-            <button negative onClick={closeModal}>Close</button>
+            <Button negative onClick={closeModal}>Close</Button>
         </Modal.Actions>
       </Modal>`
     </Container>

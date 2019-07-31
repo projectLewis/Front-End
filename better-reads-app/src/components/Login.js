@@ -45,6 +45,7 @@ function Login(props) {
         <Input className="input"
           name="password"
           placeholder="password"
+          type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
