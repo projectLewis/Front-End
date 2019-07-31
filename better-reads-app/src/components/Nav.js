@@ -1,37 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from 'semantic-ui-react';
+import { Button } from "semantic-ui-react";
 
 function Nav(props) {
+  function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+  }
+
   return (
-  <div>
-    <nav>
+    <div>
+      <nav>
         <Link to="/login">
-          <Button className="button-nav" type="login">
-          Login
-          </Button>
+          <Button className="button-nav">Login</Button>
         </Link>
         <Link to="/register">
-          <Button className="button-nav" type="register">
-            Sign up
-          </Button>
+          <Button className="button-nav">Sign up</Button>
         </Link>
         <Link to="/">
-          <Button className="button-nav" type="search">
-            Search Books
-          </Button>
+          <Button className="button-nav">Search Books</Button>
         </Link>
-        {localStorage.getItem("token") && <Link to="/saved_books">
-          <Button className="button-nav" type="search">
-            Saved Books
-          </Button>
-        </Link>}
-
-
-
-    </nav>
-  </div>
-
+        {localStorage.getItem("token") && (
+          <Link to="/saved_books">
+            <Button className="button-nav">Saved Books</Button>
+            <Button className="button-nav" onClick={logout}>
+              Logout
+            </Button>
+          </Link>
+        )}
+      </nav>
+    </div>
   );
 }
 

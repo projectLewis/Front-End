@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { Button, Input} from 'semantic-ui-react';
-import { ReactComponent as BookReadSvg } from '../imgs/undraw_reading_list_4boi.svg'
+import { Button, Input, Image} from 'semantic-ui-react';
 
 function Register({history}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const newUser = { username, password };
   const [newUser, setNewUser] = useState(null);
 
   function handleRegister(e) {
@@ -35,7 +32,7 @@ function Register({history}) {
 
   return (
     <>
-      <BookReadSvg style={{height: '400px'}}/>
+    <Image src={require('../imgs/undraw_reading_list_4boi.svg')} style={{maxHeight: '400px', padding: '20px' }} fluid />
     <div className="buttons">
       <form className="form" onSubmit={handleRegister}>
       <div className="inputForm">

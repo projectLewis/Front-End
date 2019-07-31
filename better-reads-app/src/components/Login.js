@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
-import PropTypes from "prop-types";
-import { Input } from 'semantic-ui-react';
-import { Button } from 'semantic-ui-react';
-import { ReactComponent as BookLoverSvg } from '../imgs/undraw_book_lover_mkck.svg'
+import { Input, Button, Image } from 'semantic-ui-react';
 
 function Login(props) {
   const [username, setUsername] = useState("");
@@ -24,6 +21,7 @@ function Login(props) {
         .then(res => {
           console.log("login successful, res is:", res);
           localStorage.setItem("token", res.data.token);
+          // localStorage.setItem("user_id", res.data.userId)
           setUsername("");
           setPassword("");
         })
@@ -34,7 +32,7 @@ function Login(props) {
 
   return (
     <>
-      <BookLoverSvg style={{height: '400px'}}/>
+      <Image src={require('../imgs/undraw_book_lover_mkck.svg')} style={{maxHeight: '400px', padding: '20px' }} fluid />
 
      <div className="buttons">
       <form className="form" onSubmit={handleRegister}>
@@ -70,4 +68,3 @@ function Login(props) {
 Login.propTypes = {};
 
 export default Login;
-

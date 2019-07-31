@@ -4,6 +4,8 @@ import Axios from "axios";
 import PropTypes from "prop-types";
 import BookModal from "./BookModal";
 
+// import axiosWithAuth from "../functions/index";
+
 function Book({ book }) {
   // think about what to do for images that don't exist as they are truthy
 
@@ -11,10 +13,12 @@ function Book({ book }) {
 
   useEffect(() => {}, []);
 
-  function addToSavedList(book) {
-    Axios.post("https://better-reads-db.herokuapp.com/api/books/save/:userid",{})
-    .then()
-  }
+  // function addToSavedList(book) {
+  //   axiosWithAuth()
+  //     .post("https://better-reads-db.herokuapp.com/api/books/save/:userid")
+  //     .then(res => console.log(res))
+  //     .catch(res => console.log(res));
+  // }
 
   function openModal() {
     setModalOpen(true);
@@ -33,7 +37,7 @@ function Book({ book }) {
           <Card.Meta>{book.author}</Card.Meta>
           {}
           <Icon className="heart" />
-          <Icon className="heart outline" onClick={addToSavedList}/>
+          <Icon className="heart outline" />
         </Card.Content>
       </Card>
 
