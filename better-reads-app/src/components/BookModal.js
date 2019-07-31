@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import Axios from "axios";
-import { Card, Image, Dimmer, Loader } from 'semantic-ui-react'
+import { Dimmer, Loader } from 'semantic-ui-react'
 
 const BookModal = ({isbn}) => {
     const [book, addBook] = useState([])
