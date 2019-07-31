@@ -67,7 +67,7 @@ function Home() {
         <Button>Search</Button>
 
         <div>
-          <Checkbox name="search" name="search" value="author" />
+          <Checkbox name="search" value="author" />
           <label for="author">Search by author only</label>
         </div>
       </Form>
