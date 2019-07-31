@@ -6,7 +6,6 @@ import { Input, Button, Image } from 'semantic-ui-react';
 function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const newUser = { username, password };
   const [user, setUser] = useState(null);
 
   function handleRegister(e) {
