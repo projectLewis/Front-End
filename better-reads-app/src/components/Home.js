@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, Checkbox } from 'semantic-ui-react';
+import { Button, Input, Checkbox, Form } from 'semantic-ui-react';
 
 import axios from "axios";
 import RecommendedBooks from "./RecommendedBooks";
 
-function Home(props) {
+function Home() {
   const [searchInput, setSearchInput] = useState("");
   const [searchTerm, setSearchTerm] = useState(null);
   const [recommendedBooks, setRecommendedBooks] = useState([
@@ -56,20 +55,22 @@ function Home(props) {
   }, [searchTerm]);
   return (
     <div>
-      <form className="form" onSubmit={handleSubmit}>
-        <Input icon='search' className="input"
+      <Form onSubmit={handleSubmit}>
+      <Form.Field style={{padding: '5% 15% 2% 15%'}}>
+        <Input icon='search'
           name="description"
           placeholder="Search.."
           value={searchInput}
           onChange={handleChanges}
         />
+        </Form.Field>
         <Button>Search</Button>
 
         <div>
           <Checkbox name="search" name="search" value="author" />
           <label for="author">Search by author only</label>
         </div>
-      </form>
+      </Form>
       {recommendedBooks.length === 0 ? (
         <div>Search something!</div>
 
