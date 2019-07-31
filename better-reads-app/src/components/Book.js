@@ -6,7 +6,6 @@ import {
   Modal,
   Button,
 } from "semantic-ui-react";
-import PropTypes from "prop-types";
 import BookModal from "./BookModal";
 
 function Book({ book }) {
