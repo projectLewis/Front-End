@@ -28,7 +28,7 @@ function Book({ book }) {
 
         {/* </Modal> */}
       </Container>
-    </Link>
+     </Link>
   );
 }
 

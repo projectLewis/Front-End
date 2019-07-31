@@ -33,8 +33,10 @@ function Register({history}) {
   }, [newUser, history]);
 
   return (
-    <div>
+    <div className="buttons">
+      
       <form className="form" onSubmit={handleRegister}>
+      <div className="inputForm">
         <Input className="input"
           name="username"
           placeholder="username"
@@ -42,7 +44,9 @@ function Register({history}) {
           value={username}
           onChange={e => setUsername(e.target.value)}
         />
-        <Input className="input"
+        </div>
+        <div className="inputForm">
+        <Input className="inputForm"
           name="password"
           placeholder="password"
           type="password"
@@ -51,10 +55,15 @@ function Register({history}) {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <Button>Register</Button>
-        <Button type="login">
+        </div>
+        <div className="button">
+        <Button>Sign up</Button>
+        </div>
+        <div>
+        <Button className="button" type="login">
           <Link to="/login">Login</Link>
         </Button>
+        </div>
       </form>
     </div>
   );

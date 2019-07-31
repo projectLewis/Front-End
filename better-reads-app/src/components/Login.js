@@ -32,24 +32,32 @@ function Login(props) {
   }, [props.history, user]);
 
   return (
-    <div>
+    <div className="buttons">
       <form className="form" onSubmit={handleRegister}>
+        <div className="inputForm">
         <Input className="input"
           name="username"
           placeholder="username"
           value={username}
           onChange={e => setUsername(e.target.value)}
         />
+        </div>
+        <div className="inputForm">
         <Input className="input"
           name="password"
           placeholder="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
+        </div>
+        <div className="button">
         <Button>Login</Button>
+        </div>
+        <div className="button">
         <Button type="button">
-          <Link to="/register">Register</Link>
+          <Link to="/register">Sign up</Link>
         </Button>
+        </div>
       </form>
     </div>
   );
