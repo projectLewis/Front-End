@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Button, Input} from 'semantic-ui-react';
+import { ReactComponent as BookReadSvg } from '../imgs/undraw_reading_list_4boi.svg'
 
 function Register({history}) {
   const [username, setUsername] = useState("");
@@ -33,8 +34,9 @@ function Register({history}) {
   }, [newUser, history]);
 
   return (
+    <>
+      <BookReadSvg style={{height: '400px'}}/>
     <div className="buttons">
-      
       <form className="form" onSubmit={handleRegister}>
       <div className="inputForm">
         <Input className="input"
@@ -55,17 +57,18 @@ function Register({history}) {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        </div>
-        <div className="button">
-        <Button>Sign up</Button>
+
         </div>
         <div>
-        <Button className="button" type="login">
-          <Link to="/login">Login</Link>
-        </Button>
+      </div>
+        <Button>Register</Button>
+        <div>Already have an Account? 
+          <Link to="/login"> Login</Link>
+
         </div>
       </form>
     </div>
+  </>
   );
 }
 

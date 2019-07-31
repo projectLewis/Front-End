@@ -1,28 +1,32 @@
-import React,{useEffect} from "react";
-import ReactDOM from "react-dom";
-import { Button, Header, Image, Modal } from 'semantic-ui-react';
+import React,{useState, useEffect} from "react";
 import Axios from "axios";
+import { Card, Image, Dimmer, Loader } from 'semantic-ui-react'
 
+const BookModal = ({isbn}) => {
+    const [book, addBook] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+    useEffect(() => {
+        if (isbn) {
+           Axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
+                .then(data=>{
+                    addBook(data.data.items[0].volumeInfo)
+                    setIsLoading(false)
+                })
+       }
+    }, [isbn])
 
-const BookModal = (props) => {
-    // const [isbn, setIsbn] = useState(0)
-    // useEffect(() => {
-    //     if (isbn) {
-    //        Axios.get()
-    //    }
-    // }, [input])
-    return (
-        <Modal open>
-        <Modal.Header>Select a Photo</Modal.Header>
-        <Modal.Content image>
-        <Image wrapped size='medium' src='/images/avatar/large/rachel.png' />
-        <Modal.Description>
-        <Header>Default Profile Image</Header>
-            <p>We've found the following gravatar image associated with your e-mail address.</p>
-            <p>Is it okay to use this photo?</p>
-            </Modal.Description>
-        </Modal.Content>
-        </Modal>
+    return (isLoading) ? (
+        <Dimmer inverted active>
+          <Loader inverted > Loading </Loader>
+        </Dimmer>
+      )
+      : (
+        <>
+            <div>{book.description}</div>
+            <div>{book.pageCount} pages</div>
+            {book.averageRating ? <div>Rating: {book.averageRating}/5</div> : null}
+            <div>Maturity Rating: {book.maturityRating}</div>
+        </>
     )
 }
 

@@ -4,6 +4,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { Input } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
+import { ReactComponent as BookLoverSvg } from '../imgs/undraw_book_lover_mkck.svg'
 
 function Login(props) {
   const [username, setUsername] = useState("");
@@ -32,7 +33,10 @@ function Login(props) {
   }, [props.history, user]);
 
   return (
-    <div className="buttons">
+    <>
+      <BookLoverSvg style={{height: '400px'}}/>
+
+     <div className="buttons">
       <form className="form" onSubmit={handleRegister}>
         <div className="inputForm">
         <Input className="input"
@@ -46,23 +50,24 @@ function Login(props) {
         <Input className="input"
           name="password"
           placeholder="password"
+          type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
         </div>
         <div className="button">
-        <Button>Login</Button>
+          <Button>Login</Button>
         </div>
-        <div className="button">
-        <Button type="button">
-          <Link to="/register">Sign up</Link>
-        </Button>
+        <div> Don't have an account yet?
+          <Link to="/register"> Register</Link>
         </div>
       </form>
     </div>
+    </>
   );
 }
 
 Login.propTypes = {};
 
 export default Login;
+
