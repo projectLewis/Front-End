@@ -16,6 +16,12 @@ function Home() {
         "isbn": "0061148512"
       },
       {
+        "title": "Feminist Theory: From Margin to Center",
+        "author": "Bell Hooks",
+        "image": "https://covers.openlibrary.org/b/isbn/0896086135-M.jpg",
+        "isbn": "0896086135"
+      },
+      {
         "title": "wordslut",
         "author": "Amanda Montell",
         "image": "https://covers.openlibrary.org/b/isbn/006286887X-M.jpg",
@@ -26,12 +32,6 @@ function Home() {
         "author": "Sally Rooney",
         "image": "https://covers.openlibrary.org/b/isbn/1984822179-M.jpg",
         "isbn": "1984822179"
-      },
-      {
-        "title": "Feminist Theory: From Margin to Center",
-        "author": "Bell Hooks",
-        "image": "https://covers.openlibrary.org/b/isbn/0896086135-M.jpg",
-        "isbn": "0896086135"
       }
 
   ]);
