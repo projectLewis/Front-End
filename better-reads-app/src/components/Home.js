@@ -48,6 +48,7 @@ function Home() {
         .get("insert url here", searchTerm)
         .then(res => {
           console.log("get search request successful, res is:", res);
+          // setRecommendedBooks will go here
           setSearchTerm("");
         })
         .catch(err => console.log(err));
