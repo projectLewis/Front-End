@@ -1,21 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Card, Image, Container, Modal, Button, Icon } from "semantic-ui-react";
-import Axios from "axios";
-import PropTypes from "prop-types";
 import BookModal from "./BookModal";
 
-// import axiosWithAuth from "../functions/index";
+// import {axiosWithAuth} from "../functions/authorization.js";
 
 function Book({ book }) {
   // think about what to do for images that don't exist as they are truthy
 
   const [isModalOpen, setModalOpen] = useState(false);
 
-  useEffect(() => {}, []);
-
   // function addToSavedList(book) {
+  //   const userId = localStorage.getItem("user_id")
   //   axiosWithAuth()
-  //     .post("https://better-reads-db.herokuapp.com/api/books/save/:userid")
+  //     .post(`https://better-reads-db.herokuapp.com/api/books/save/${userId}`)
   //     .then(res => console.log(res))
   //     .catch(res => console.log(res));
   // }

@@ -6,7 +6,6 @@ import { Input, Button, Image } from 'semantic-ui-react';
 function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const newUser = { username, password };
   const [user, setUser] = useState(null);
 
   function handleRegister(e) {
@@ -21,7 +20,7 @@ function Login(props) {
         .then(res => {
           console.log("login successful, res is:", res);
           localStorage.setItem("token", res.data.token);
-          // localStorage.setItem("user_id", res.data.userId)
+          localStorage.setItem("user_id", res.data.user.id);
           setUsername("");
           setPassword("");
         })
