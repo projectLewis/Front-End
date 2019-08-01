@@ -69,12 +69,12 @@ function Home() {
 
   return (
     <div>
-      <div style={{display: 'flex', justifyContent:'space-around', width: '80%', margin:'auto'}}>
+      <div style={{display: 'flex', justifyContent:'space-around', width: '80%', margin:'2% auto'}}>
         <Image src={require('../imgs/undraw_reading_0re1.svg')} style={{maxHeight: '200px', width: '300px', padding: '0px' }} fluid />
         <div style={{alignSelf: 'center', fontSize: '1.3rem', width: '550px', lineHeight: '1.6em'}}><h1>Search for books</h1>Describe your perfect novel and let us find the best books for you. Or search for books by author.</div>
       </div>
       <Form onSubmit={handleSubmit}>
-      <Form.Field style={{padding: '15% 15% 2% 15%'}}>
+      <Form.Field style={{padding: '3% 15% 2% 15%'}}>
         <Input icon='search'
           name="description"
           placeholder="Search.."
