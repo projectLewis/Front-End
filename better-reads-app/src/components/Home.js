@@ -7,6 +7,8 @@ import RecommendedBooks from "./RecommendedBooks";
 function Home() {
   const [searchInput, setSearchInput] = useState("");
   const [searchTerm, setSearchTerm] = useState(null);
+  const [savedBookList, setSavedBookList] = useState([]);
+
   const [recommendedBooks, setRecommendedBooks] = useState([
 
       {
@@ -14,6 +16,12 @@ function Home() {
         "author": "Sylvia Plath",
         "image": "https://covers.openlibrary.org/b/isbn/0061148512-M.jpg",
         "isbn": "0061148512"
+      },
+      {
+        "title": "Feminist Theory: From Margin to Center",
+        "author": "Bell Hooks",
+        "image": "https://covers.openlibrary.org/b/isbn/0896086135-M.jpg",
+        "isbn": "0896086135"
       },
       {
         "title": "wordslut",
@@ -26,14 +34,7 @@ function Home() {
         "author": "Sally Rooney",
         "image": "https://covers.openlibrary.org/b/isbn/1984822179-M.jpg",
         "isbn": "1984822179"
-      },
-      {
-        "title": "Feminist Theory: From Margin to Center",
-        "author": "Bell Hooks",
-        "image": "https://covers.openlibrary.org/b/isbn/0896086135-M.jpg",
-        "isbn": "0896086135"
       }
-
   ]);
   function handleSubmit(e) {
     e.preventDefault();
@@ -54,6 +55,18 @@ function Home() {
         .catch(err => console.log(err));
     }
   }, [searchTerm]);
+
+  useEffect(() => {
+    const userId = localStorage.getItem("user_id");
+    axios
+      .get(`https://better-reads-db.herokuapp.com/api/users/${userId}`)
+      .then(res => {
+        console.log("get user's savedBooks successful, res is:", res);
+        setSavedBookList()
+      })
+      .catch(err => console.log(err));
+  }, []);
+
   return (
     <div>
       <Form onSubmit={handleSubmit}>
@@ -74,9 +87,8 @@ function Home() {
       </Form>
       {recommendedBooks.length === 0 ? (
         <div>Search something!</div>
-
       ) : (
-        <RecommendedBooks recommendedBooks={recommendedBooks}/>
+        <RecommendedBooks recommendedBooks={recommendedBooks} />
       )}
     </div>
   );
