@@ -10,8 +10,6 @@ import Nav from "./components/Nav";
 import SavedBooks from "./components/SavedBooks";
 import Footer from "./components/Footer";
 
-import "./App.css";
-
 
 function App() {
   return (

@@ -47,7 +47,6 @@ code {
 .navigation .logo__img, .footer .logo__img{
   height: 50px;
   max-width: 100%;
-  /* size: 40%; */
 }
 
 .navigation a {
@@ -104,5 +103,8 @@ code {
     min-height: 20px;
     /* min-width: 80px !important; */
   }
+}
 
+.App {
+  text-align: center;
 }

@@ -6,10 +6,12 @@ function Nav(props) {
   function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user_id");
+    props.history.push("/");
   }
 
   return (
     <nav className="navigation">
+
       <div className="logo">
         {/* <div className="logo"> */}
         <Image className="logo__img" alt="betterreads logo" src={require("../imgs/br-logo.png")} />
@@ -23,18 +25,14 @@ function Nav(props) {
 
         {localStorage.getItem("token") && (
           <>
-          <Link to="/saved_books">Saved Books</Link>
+            <Link to="/saved_books">Saved Books</Link>
             <Button className="button-nav" onClick={logout}>
               Logout
-            </Button> 
-            </>
+            </Button>
+          </>
         )}
       </div>
     </nav>
-
-
-        
-
   );
 }
 Nav.propTypes = {};
