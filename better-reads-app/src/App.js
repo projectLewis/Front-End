@@ -51,6 +51,7 @@ function App() {
       <Route exact path="/register" component={Register} />
       <PrivateRoute exact path="/saved_books" component={(props) => <SavedBooks {...props} savedBookList={savedBookList} setSavedBookList={setSavedBookList} recommendedBooks={recommendedBooks} setRecommendedBooks={setRecommendedBooks} />}
 />
+      <Footer />
     </div>
     
   );
