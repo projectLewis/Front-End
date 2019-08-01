@@ -28,7 +28,7 @@ function Book({ book }) {
       {/* <Modal trigger={
       <BookModal />} > */}
       <Card onClick={openModal} centered>
-        <Image style={{ height: '350px', width: "100%" }} src={`${book.image}`} />
+        <Image style={{ height: '350px', width: "100%" }} src={`${book.image}?default=false`} onError={(e)=>{e.target.onerror = null; e.target.src=require("../imgs/cover_not_found.png") }}/>
         <Card.Content style={{maxHeight:'300px'}}>
           <Card.Header>{book.title}</Card.Header>
           <Card.Meta>{book.author}</Card.Meta>
