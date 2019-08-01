@@ -50,20 +50,22 @@ function Book({ book, savedBookList, setSavedBookList }) {
   function addToSavedList() {
     console.log("book's title", book.title);
 
-    setBookToSave(
-      prevBook =>
-        (prevBook = {
+    setBookToSave(prevBook =>
+        {
+          prevBook = {
           title: book.title,
           author: book.author,
           isbn: book.isbn,
-        }),
+        }
+        return prevBook
+      },
     );
     console.log("bookToSave", bookToSave);
   }
 
-  function deleteFromSavedList() {
-    setBookToDelete(book.id);
-  }
+  // function deleteFromSavedList() {
+  //   setBookToDelete(book.id);
+  // }
 
   function openModal() {
     setModalOpen(true);
