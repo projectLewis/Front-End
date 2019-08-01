@@ -11,14 +11,11 @@ function Nav(props) {
 
   return (
     <nav className="navigation">
-      <div>
-        <div className="logo">
-          <Image
-            className="logo__img"
-            alt="betterreads logo"
-            src={require("../imgs/logo_transparent.png")}
-          />
-        </div>
+
+      <div className="logo">
+        {/* <div className="logo"> */}
+        <Image className="logo__img" alt="betterreads logo" src={require("../imgs/br-logo.png")} />
+        {/* </div> */}
       </div>
 
       <div className="nav-links">
