@@ -29,6 +29,7 @@ function Nav(props) {
         {localStorage.getItem("token") && (
           <>
             <Link to="/saved_books">Saved Books</Link>
+            <Link to="/edit_profile">Edit Profile</Link>
             <Button className="button-nav" onClick={logout}>
               Logout
             </Button>
