@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import Axios from "axios";
 
 function SavedBooks(props) {
@@ -15,7 +14,5 @@ function SavedBooks(props) {
 //   }, [savedBooks]);
   return <div />;
 }
-
-SavedBooks.propTypes = {};
 
 export default SavedBooks;

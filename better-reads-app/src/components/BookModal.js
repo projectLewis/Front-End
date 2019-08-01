@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import Axios from "axios";
-import { Card, Image, Dimmer, Loader } from 'semantic-ui-react'
+import { Header, Dimmer, Loader } from 'semantic-ui-react'
 
 const BookModal = ({isbn}) => {
     const [book, addBook] = useState([])
@@ -22,10 +22,12 @@ const BookModal = ({isbn}) => {
       )
       : (
         <>
-            <div>{book.description}</div>
-            <div>{book.pageCount} pages</div>
-            {book.averageRating ? <div>Rating: {book.averageRating}/5</div> : null}
-            <div>Maturity Rating: {book.maturityRating}</div>
+            <Header>{book.title} <Header sub>{book.authors}</Header> </Header>
+            <h5>Description: </h5>
+            <p>{book.description}</p>
+            <p>{book.pageCount} pages</p>
+            {book.averageRating ? <p>Rating: {book.averageRating}/5</p> : null}
+            <a style={{display: "table-cell"}} target="_blank" href={book.previewLink}>View in Google Books ></a>
         </>
     )
 }

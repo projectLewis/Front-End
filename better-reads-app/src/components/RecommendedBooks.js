@@ -1,20 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Book from "./Book";
 
 function RecommendedBooks({ recommendedBooks }) {
   console.log(recommendedBooks)
   return (
-    // <div>
-    //   {recommendedBooks.length === 0 ?
-    //   <div>No results found..</div>
-    //    : {recommendedBooks.map(book=><Book/>)}} 
-
-    // </div>
-    <div>{recommendedBooks.map(book=><Book book={book}/>)}</div>
+    <div className='bookFlexWrapper' style={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      margin: '40px auto',
+      maxWidth: '1000px',
+      padding: '0 20px',
+      justifyContent: 'center'
+    }}>
+       {recommendedBooks.map(book=><Book book={book}/>)} 
+    </div>
   );
 }
-
-RecommendedBooks.propTypes = {};
 
 export default RecommendedBooks;

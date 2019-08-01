@@ -1,6 +1,5 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import BookModal from "./components/BookModal"
 
 // import components
 import PrivateRoute from "./components/PrivateRoute"
