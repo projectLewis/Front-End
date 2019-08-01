@@ -5,7 +5,8 @@ import { Image } from "semantic-ui-react";
 function Footer(props) {
 
   return (
-    <nav className="footer">
+      <footer>
+    <div className="footer">
       {/* <div> */}
         <div className="logo">
         <Image className="logo__img" alt="betterreads logo" src={require("../imgs/br-logo.png")} />
@@ -16,7 +17,9 @@ function Footer(props) {
         <p className="copyright">&copy;2019</p>
 
       </div>
-    </nav>
+    </div>
+
+    </footer>
 
 
         
