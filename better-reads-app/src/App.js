@@ -21,6 +21,7 @@ function App() {
       <PrivateRoute exact path="/saved_books" component={SavedBooks} />
       <Footer />
     </div>
+    
   );
 }
 
