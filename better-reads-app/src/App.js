@@ -7,7 +7,9 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Nav from "./components/Nav";
-import SavedBooks from "./components/SavedBooks"
+import SavedBooks from "./components/SavedBooks";
+import Footer from "./components/Footer";
+
 
 function App() {
 
