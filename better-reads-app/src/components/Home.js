@@ -70,7 +70,7 @@ function Home() {
   return (
     <div>
       <Form onSubmit={handleSubmit}>
-      <Form.Field style={{padding: '5% 15% 2% 15%'}}>
+      <Form.Field style={{padding: '15% 15% 2% 15%'}}>
         <Input icon='search'
           name="description"
           placeholder="Search.."
