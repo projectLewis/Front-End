@@ -8,31 +8,39 @@ function Book({ book, savedBookList, setSavedBookList }) {
   // think about what to do for images that don't exist as they are truthy
   const [isModalOpen, setModalOpen] = useState(false);
   const [bookToSave, setBookToSave] = useState(null);
-  const [bookToDelete, setBookToDelete] = useState(false);
+  const [bookToDelete, setBookToDelete] = useState(null);
   const [liked, setLiked] = useState(false);
-
-  function toggleClick() {
-    setLiked(!liked);
-  }
 
   const userId = localStorage.getItem("user_id");
 
-  // useEffect(() => {
-  //   if (bookToSave) {
-  //     axiosWithAuth()
-  //       .post(
-  //         `https://better-reads-db.herokuapp.com/api/books/save/${userId}`,
-  //         bookToSave,
-  //       )
-  //       .then(res => {
-  //         console.log(res);
-  //         setSavedBookList(res.data);
-  //       })
-  //       .catch(res => console.log(res));
-  //   }
-  // }, [bookToSave, setSavedBookList, userId]);
+  useEffect(() => {
+    console.log('running')
+    for (let i = 0; i < savedBookList.length; i++) {
+      if (savedBookList[i].isbn === book.isbn) {
+        return setLiked(true)
+      }
+    }
+    return setLiked(false)
+  }, [book.isbn, savedBookList])
 
   useEffect(() => {
+    console.log(bookToSave)
+    if (bookToSave) {
+      axiosWithAuth()
+        .post(
+          `https://better-reads-db.herokuapp.com/api/books/save/${userId}`,
+          bookToSave,
+        )
+        .then(res => {
+          console.log(res);
+          setSavedBookList(res.data);
+        })
+        .catch(res => console.log(res));
+    }
+  }, [bookToSave, setSavedBookList, userId]);
+
+  useEffect(() => {
+    console.log(bookToDelete)
     if (bookToDelete) {
       axiosWithAuth()
         .delete(
@@ -48,21 +56,19 @@ function Book({ book, savedBookList, setSavedBookList }) {
   }, [bookToDelete, setSavedBookList, userId]);
 
   function addToSavedList() {
-    console.log("book's title", book.title);
-
-    setBookToSave(
-      prevBook =>
-        (prevBook = {
+    setBookToSave({
           title: book.title,
           author: book.author,
           isbn: book.isbn,
-        }),
-    );
-    console.log("bookToSave", bookToSave);
+      });
   }
 
   function deleteFromSavedList() {
-    setBookToDelete(book.id);
+    setBookToDelete(
+      prevBook => {
+      prevBook = {data: {isbn: `${book.isbn}`}};
+      console.log(prevBook)
+      return prevBook});
   }
 
   function openModal() {
@@ -76,11 +82,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
       {/* <Modal trigger={
       <BookModal />} > */}
       <Card centered>
-        <Image
-          style={{ height: "350px", width: "100%" }}
-          src={`"https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg"`}
-          onClick={openModal}
-        />
+        <Image onClick={openModal} style={{ height: '350px', width: "100%" }} src={`${book.image}?default=false`} onError={(e)=>{e.target.onerror = null; e.target.src=require("../imgs/cover_not_found.png") }}/>
         <Card.Content style={{ maxHeight: "300px" }}>
           <Card.Header onClick={openModal}>{book.title}</Card.Header>
           <Card.Meta onClick={openModal}>{book.author}</Card.Meta>
@@ -89,11 +91,11 @@ function Book({ book, savedBookList, setSavedBookList }) {
           ) : (
             <Icon className="heart outline" onClick={addToSavedList} />
           )} */}
-          {liked ? (
-            <Icon className="heart" onClick={addToSavedList} />
-          ) : (
+          {liked ? 
+            <Icon className="heart" onClick={deleteFromSavedList} />
+           : 
             <Icon className="heart outline" onClick={addToSavedList} />
-          )}
+          }
         </Card.Content>
       </Card>
 

@@ -16,38 +16,11 @@ const Wrapper = styled.div`
   }
 `;
 
-function Home() {
+function Home({savedBookList, setSavedBookList, recommendedBooks, setRecommendedBooks}) {
   const [searchInput, setSearchInput] = useState("");
   const [searchTerm, setSearchTerm] = useState(null);
-  const [savedBookList, setSavedBookList] = useState([]);
   const userId = localStorage.getItem("user_id");
-  console.log("this is the savedBookList array within Home", savedBookList);
-  const [recommendedBooks, setRecommendedBooks] = useState([
-    {
-      title: "The Bell Jar",
-      author: "Sylvia Plath",
-      image: "https://covers.openlibrary.org/b/isbn/0061148512-M.jpg",
-      isbn: "0061148512",
-    },
-    {
-      title: "Feminist Theory: From Margin to Center",
-      author: "Bell Hooks",
-      image: "https://covers.openlibrary.org/b/isbn/0896086135-M.jpg",
-      isbn: "0896086135",
-    },
-    {
-      title: "wordslut",
-      author: "Amanda Montell",
-      image: "https://covers.openlibrary.org/b/isbn/006286887X-M.jpg",
-      isbn: "006286887X",
-    },
-    {
-      title: "Normal People",
-      author: "Sally Rooney",
-      image: "https://covers.openlibrary.org/b/isbn/1984822179-M.jpg",
-      isbn: "1984822179",
-    },
-  ]);
+
   function handleSubmit(e) {
     e.preventDefault();
     setSearchTerm(searchInput);
@@ -77,7 +50,7 @@ function Home() {
         })
         .catch(err => console.log(err));
     }
-  }, [userId]);
+  }, [setSavedBookList, userId]);
 
   return (
     <div>
