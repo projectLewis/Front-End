@@ -1,32 +1,14 @@
 body {
-  /* margin-top: 2em;
-  background-color: #f5f1ea;
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
-
-
- 
-    /* position: relative;
-    height: 95vh;
-    background-image: linear-gradient(to top right, rgba(191, 0, 0, 0.8), rgba(128, 0, 0, 0.8)), url(../img/books-girl.jpg);
-    background-size: cover;
-    background-position: center;
-    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
-   */
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-.form {
-  padding-top: 1em;
 }
 
 .input {
@@ -52,14 +34,32 @@ code {
   margin-right: 2em;
 }
 
-/* nav {
-  text-align: right;
-  margin-right: 2em;
-} */
-
 .navigation {
   display: flex;
   justify-content: space-between;
   background: linear-gradient(to right, #bf0000, grey);
 }
 
+.navigation .logo__img {
+  max-height: 80px;
+}
+
+.navigation a {
+  color: #f8f0e4;
+  padding: 2rem 4rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-family: 'EB Garamond', serif;
+}
+
+.navigation div {
+  padding: 0 0;
+}
+.navigation div.logo {
+  padding: 0 4rem;
+}
+
+.navigation div.nav-links {
+  display: flex;
+  align-items: center;
+}
