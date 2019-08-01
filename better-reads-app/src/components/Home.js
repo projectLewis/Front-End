@@ -90,15 +90,6 @@ function Home({
           />
         </Form.Field>
         <Button>Search</Button>
-
-        <div>
-          <Checkbox
-            name="search"
-            value="author"
-            style={{ top: "5px", left: "-5px" }}
-          />
-          <label for="author">Search by author only</label>
-        </div>
       </Form>
       {recommendedBooks.length === 0 ? (
         <div>Search something!</div>

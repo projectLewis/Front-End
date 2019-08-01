@@ -99,7 +99,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
             <Icon className="heart outline" onClick={addToSavedList} />
           )} */}
           {liked ? (
-            <Icon className="heart" onClick={deleteFromSavedList} />
+            <Icon className="heart" color="red" onClick={deleteFromSavedList} />
           ) : (
             <Icon className="heart outline" onClick={addToSavedList} />
           )}
