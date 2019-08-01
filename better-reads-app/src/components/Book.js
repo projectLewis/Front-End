@@ -8,21 +8,23 @@ function Book({ book, savedBookList, setSavedBookList }) {
   // think about what to do for images that don't exist as they are truthy
   const [isModalOpen, setModalOpen] = useState(false);
   const [bookToSave, setBookToSave] = useState(null);
-  const [bookToDelete, setBookToDelete] = useState(false);
+  const [bookToDelete, setBookToDelete] = useState(null);
   const [liked, setLiked] = useState(false);
 
   const userId = localStorage.getItem("user_id");
 
   useEffect(() => {
-    (console.log('page load'))
-    savedBookList.forEach(savedBook => {
-      if (savedBook.isbn === book.isbn) {
-        setLiked(true)
+    console.log('running')
+    for (let i = 0; i < savedBookList.length; i++) {
+      if (savedBookList[i].isbn === book.isbn) {
+        return setLiked(true)
       }
-    })
+    }
+    return setLiked(false)
   }, [book.isbn, savedBookList])
 
   useEffect(() => {
+    console.log(bookToSave)
     if (bookToSave) {
       axiosWithAuth()
         .post(
@@ -38,6 +40,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
   }, [bookToSave, setSavedBookList, userId]);
 
   useEffect(() => {
+    console.log(bookToDelete)
     if (bookToDelete) {
       axiosWithAuth()
         .delete(
@@ -61,7 +64,11 @@ function Book({ book, savedBookList, setSavedBookList }) {
   }
 
   function deleteFromSavedList() {
-    setBookToDelete(book.id);
+    setBookToDelete(
+      prevBook => {
+      prevBook = {data: {isbn: `${book.isbn}`}};
+      console.log(prevBook)
+      return prevBook});
   }
 
   function openModal() {
@@ -85,9 +92,9 @@ function Book({ book, savedBookList, setSavedBookList }) {
             <Icon className="heart outline" onClick={addToSavedList} />
           )} */}
           {liked ? 
-            <Icon className="heart" onClick={addToSavedList} />
+            <Icon className="heart" onClick={deleteFromSavedList} />
            : 
-            <Icon className="heart outline" onClick={deleteFromSavedList} />
+            <Icon className="heart outline" onClick={addToSavedList} />
           }
         </Card.Content>
       </Card>
