@@ -45,7 +45,12 @@ code {
 }
 
 .navigation .logo__img, .footer .logo__img{
-  height: 50px;
+  max-height: 50px;
+  max-width: 100%;
+}
+
+.footer .logo__img {
+  height: 40px;
   max-width: 100%;
 }
 
@@ -56,10 +61,9 @@ code {
   text-decoration: none;
   font-family: 'EB Garamond', serif;
 }
-
-/* .navigation div {
-  padding: 0 0;
-} */
+.navigation a {
+  padding: 1rem 2rem;
+}
 .navigation div.logo {
   padding: 0.3rem 4rem;
 }
@@ -81,27 +85,29 @@ code {
 
 .footer {
   margin-top: 2rem;
-}
 
-@media(max-width: 630px) {
-  .navigation a {
-    padding: 1rem 2rem;
+ }
+ 
+ @media(max-width: 900px) {
+  .navigation .logo__img {
+    height: 35px;
   }
 }
 
-@media(max-width: 500px) {
+
+@media(max-width: 700px) {
 
   .navigation a {
     padding: 1rem 1rem;
+    font-size: 1rem;
     }
 
-    .navigation div.logo {
+  .navigation div.logo {
       padding: 0.3rem 1rem;
   }
 
-  .navigation .logo__img, .footer .logo__img{
-    min-height: 20px;
-    /* min-width: 80px !important; */
+  .navigation .logo__img {
+    height: 35px;
   }
 }
 
