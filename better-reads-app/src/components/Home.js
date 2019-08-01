@@ -16,7 +16,12 @@ const Wrapper = styled.div`
   }
 `;
 
-function Home({savedBookList, setSavedBookList, recommendedBooks, setRecommendedBooks}) {
+function Home({
+  savedBookList,
+  setSavedBookList,
+  recommendedBooks,
+  setRecommendedBooks,
+}) {
   const [searchInput, setSearchInput] = useState("");
   const [searchTerm, setSearchTerm] = useState(null);
   const userId = localStorage.getItem("user_id");
@@ -31,14 +36,16 @@ function Home({savedBookList, setSavedBookList, recommendedBooks, setRecommended
   useEffect(() => {
     if (searchTerm) {
       axios
-        .get("insert url here", searchTerm)
+        .get(
+          `http://better-reads-cors-fix.rvpsipbyha.us-east-1.elasticbeanstalk.com/${searchTerm}`,
+        )
         .then(res => {
-          // setRecommendedBooks will go here
+          setRecommendedBooks(res.data);
           setSearchTerm("");
         })
         .catch(err => console.log(err));
     }
-  }, [searchTerm]);
+  }, [searchTerm, setRecommendedBooks]);
 
   useEffect(() => {
     if (localStorage.getItem("user_id")) {
@@ -53,7 +60,7 @@ function Home({savedBookList, setSavedBookList, recommendedBooks, setRecommended
   }, [setSavedBookList, userId]);
 
   return (
-    <div>
+    <div style={{ minHeight: "80vh" }}>
       <Wrapper>
         <Image
           src={require("../imgs/undraw_reading_0re1.svg")}
