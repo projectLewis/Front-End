@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Button, Input, Checkbox } from 'semantic-ui-react';
-
+import { Button, Input, Checkbox, Image } from 'semantic-ui-react';
+import SkewedContainer from 'sc-react';
 import axios from "axios";
 import RecommendedBooks from "./RecommendedBooks";
 
@@ -54,8 +54,13 @@ function Home(props) {
         .catch(err => console.log(err));
     }
   }, [searchTerm]);
+  //className = 'wrapper' style={{display: 'flex', justifyContent:'space-around', width: '80%', margin:'auto'}}
   return (
     <div>
+        <div style={{display: 'flex', justifyContent:'space-around', width: '80%', margin:'auto'}}>
+          <Image src={require('../imgs/undraw_reading_0re1.svg')} style={{maxHeight: '200px', width: '300px', padding: '0px' }} fluid />
+          <div style={{alignSelf: 'center', fontSize: '1.4rem', width: '550px', lineHeight: '1.6em'}}><h1>Search for books</h1>Describe your perfect novel and let us find the best books for you. Or search for books by author.</div>
+        </div>
       <form className="form" onSubmit={handleSubmit}>
         <Input icon='search' className="input"
           name="description"
