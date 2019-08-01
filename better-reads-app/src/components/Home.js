@@ -40,7 +40,6 @@ function Home({
           `http://better-reads-cors-vector-2.rvpsipbyha.us-east-1.elasticbeanstalk.com/${searchTerm}`,
         )
         .then(res => {
-          console.log("res from get", res);
           setRecommendedBooks(res.data);
           setSearchTerm("");
         })
@@ -53,7 +52,6 @@ function Home({
       axios
         .get(`https://better-reads-db.herokuapp.com/api/users/list/${userId}`)
         .then(res => {
-          console.log("get user's savedBooks successful, res is:", res);
           setSavedBookList(res.data);
         })
         .catch(err => console.log(err));

@@ -7,9 +7,7 @@ function SavedBooks({ savedBookList, setSavedBookList }) {
   const userId = localStorage.getItem("user_id");
   useEffect(() => {
     Axios.get(`https://better-reads-db.herokuapp.com/api/users/list/${userId}`)
-      // set savedBooks to the array we get back..
       .then(res => {
-        console.log(res);
         setSavedBooks(res.data);
       })
       .catch(err => console.log(err));
@@ -20,12 +18,12 @@ function SavedBooks({ savedBookList, setSavedBookList }) {
       <h1> Saved Books </h1>
       {savedBooks.map(savedBook => (
         <Book
+          key={savedBook.id}
           book={savedBook}
           savedBookList={savedBookList}
           setSavedBookList={setSavedBookList}
         />
       ))}
-      
     </div>
   );
 }

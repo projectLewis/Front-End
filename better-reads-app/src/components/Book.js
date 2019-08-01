@@ -23,7 +23,6 @@ function Book({ book, savedBookList, setSavedBookList }) {
   }, [book.ISBN, savedBookList]);
 
   useEffect(() => {
-    console.log(bookToSave);
     if (bookToSave) {
       axiosWithAuth()
         .post(
@@ -39,7 +38,6 @@ function Book({ book, savedBookList, setSavedBookList }) {
   }, [bookToSave, setSavedBookList, userId]);
 
   useEffect(() => {
-    console.log(bookToDelete);
     if (bookToDelete) {
       axiosWithAuth()
         .delete(
@@ -84,7 +82,9 @@ function Book({ book, savedBookList, setSavedBookList }) {
         <Image
           onClick={openModal}
           style={{ height: "350px", width: "100%" }}
-          src={`https://covers.openlibrary.org/b/ISBN/${book.ISBN}-M.jpg?default=false`}
+          src={`https://covers.openlibrary.org/b/ISBN/${
+            book.ISBN
+          }-M.jpg?default=false`}
           onError={e => {
             e.target.onerror = null;
             e.target.src = require("../imgs/cover_not_found.png");
@@ -107,7 +107,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
       </Card>
 
       {/* </Modal> */}
-      <Modal size={"medium"} open={isModalOpen} onClose={closeModal}>
+      <Modal size={"large"} open={isModalOpen} onClose={closeModal}>
         <Modal.Header>More info</Modal.Header>
         <Modal.Content>
           <BookModal ISBN={book.ISBN} />
