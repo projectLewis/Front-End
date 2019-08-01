@@ -20,6 +20,7 @@ function Login(props) {
         .then(res => {
           console.log("login successful, res is:", res);
           localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user_id", res.data.user.id);
           setUsername("");
           setPassword("");
         })
@@ -66,4 +67,3 @@ function Login(props) {
 Login.propTypes = {};
 
 export default Login;
-

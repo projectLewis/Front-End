@@ -33,6 +33,7 @@ function Register({history}) {
   return (
     <>
     <Image src={require('../imgs/undraw_reading_list_4boi.svg')} style={{maxHeight: '400px', padding: '20px' }} fluid />
+    
     <div className="buttons">
       <form className="form" onSubmit={handleRegister}>
       <div className="inputForm">
@@ -45,7 +46,7 @@ function Register({history}) {
         />
         </div>
         <div className="inputForm">
-        <Input className="inputForm"
+        <Input className="input"
           name="password"
           placeholder="password"
           type="password"
@@ -54,14 +55,12 @@ function Register({history}) {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-
         </div>
-        <div>
-      </div>
+        <div className="button">
         <Button>Register</Button>
+        </div>
         <div>Already have an Account? 
           <Link to="/login"> Login</Link>
-
         </div>
       </form>
     </div>

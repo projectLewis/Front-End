@@ -1,35 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from 'semantic-ui-react';
+import { Button, Image } from "semantic-ui-react";
 
 function Nav(props) {
+  function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+  }
+
   return (
-  <div>
-    <nav>
-        <Link to="/login">
-          <Button className="button-nav" type="login">
-          Login
-          </Button>
-        </Link>
-        <Link to="/register">
-          <Button className="button-nav" type="register">
-            Sign up
-          </Button>
-        </Link>
-        <Link to="/">
-          <Button className="button-nav" type="search">
-            Search Books
-          </Button>
-        </Link>
+    <nav className="navigation">
+      <div>
+        <div className="logo">
+        <Image className="logo__img" alt="betterreads logo" src={require("../imgs/logo_transparent.png")} />
+        </div>
+      </div>
 
+      <div className="nav-links">
+        <Link to="/"> Search</Link>
+        <Link to="/register"> Register</Link>
+        <Link to="/login"> Login</Link>
 
-
+        {localStorage.getItem("token") && (
+          <>
+          <Link to="/saved_books">Saved Books</Link>
+            <Button className="button-nav" onClick={logout}>
+              Logout
+            </Button> 
+            </>
+        )}
+      </div>
     </nav>
-  </div>
+
+
+        
 
   );
 }
-
 Nav.propTypes = {};
-
 export default Nav;
