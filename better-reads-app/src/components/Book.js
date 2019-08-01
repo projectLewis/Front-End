@@ -14,17 +14,16 @@ function Book({ book, savedBookList, setSavedBookList }) {
   const userId = localStorage.getItem("user_id");
 
   useEffect(() => {
-    console.log('running')
     for (let i = 0; i < savedBookList.length; i++) {
-      if (savedBookList[i].isbn === book.isbn) {
-        return setLiked(true)
+      if (savedBookList[i].isbn === book.ISBN) {
+        return setLiked(true);
       }
     }
-    return setLiked(false)
-  }, [book.isbn, savedBookList])
+    return setLiked(false);
+  }, [book.ISBN, savedBookList]);
 
   useEffect(() => {
-    console.log(bookToSave)
+    console.log(bookToSave);
     if (bookToSave) {
       axiosWithAuth()
         .post(
@@ -40,7 +39,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
   }, [bookToSave, setSavedBookList, userId]);
 
   useEffect(() => {
-    console.log(bookToDelete)
+    console.log(bookToDelete);
     if (bookToDelete) {
       axiosWithAuth()
         .delete(
@@ -57,18 +56,18 @@ function Book({ book, savedBookList, setSavedBookList }) {
 
   function addToSavedList() {
     setBookToSave({
-          title: book.title,
-          author: book.author,
-          isbn: book.isbn,
-      });
+      title: book.title,
+      author: book.author,
+      isbn: book.ISBN,
+    });
   }
 
   function deleteFromSavedList() {
-    setBookToDelete(
-      prevBook => {
-      prevBook = {data: {isbn: `${book.isbn}`}};
-      console.log(prevBook)
-      return prevBook});
+    setBookToDelete(prevBook => {
+      prevBook = { data: { isbn: `${book.ISBN}` } };
+      console.log(prevBook);
+      return prevBook;
+    });
   }
 
   function openModal() {
@@ -82,20 +81,28 @@ function Book({ book, savedBookList, setSavedBookList }) {
       {/* <Modal trigger={
       <BookModal />} > */}
       <Card centered>
-        <Image onClick={openModal} style={{ height: '350px', width: "100%" }} src={`${book.image}?default=false`} onError={(e)=>{e.target.onerror = null; e.target.src=require("../imgs/cover_not_found.png") }}/>
+        <Image
+          onClick={openModal}
+          style={{ height: "350px", width: "100%" }}
+          src={`https://covers.openlibrary.org/b/ISBN/${book.ISBN}-M.jpg?default=false`}
+          onError={e => {
+            e.target.onerror = null;
+            e.target.src = require("../imgs/cover_not_found.png");
+          }}
+        />
         <Card.Content style={{ maxHeight: "300px" }}>
           <Card.Header onClick={openModal}>{book.title}</Card.Header>
           <Card.Meta onClick={openModal}>{book.author}</Card.Meta>
-          {/* {savedBookList.find(savedBook => savedBook.isbn === book.isbn) ? (
+          {/* {savedBookList.find(savedBook => savedBook.ISBN === book.ISBN) ? (
             <Icon className="heart" onClick={deleteFromSavedList} />
           ) : (
             <Icon className="heart outline" onClick={addToSavedList} />
           )} */}
-          {liked ? 
+          {liked ? (
             <Icon className="heart" onClick={deleteFromSavedList} />
-           : 
+          ) : (
             <Icon className="heart outline" onClick={addToSavedList} />
-          }
+          )}
         </Card.Content>
       </Card>
 
@@ -103,7 +110,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
       <Modal size={"medium"} open={isModalOpen} onClose={closeModal}>
         <Modal.Header>More info</Modal.Header>
         <Modal.Content>
-          <BookModal isbn={book.isbn} />
+          <BookModal ISBN={book.ISBN} />
         </Modal.Content>
         <Modal.Actions>
           <Button negative onClick={closeModal}>

@@ -60,6 +60,7 @@ function App() {
       />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
+
       <PrivateRoute
         exact
         path="/saved_books"
@@ -88,7 +89,7 @@ function App() {
       />
       <Footer />
     </div>
-    
+
   );
 }
 

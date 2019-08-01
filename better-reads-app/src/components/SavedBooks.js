@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Book from "./Book.js";
 import Axios from "axios";
 
-function SavedBooks({savedBookList, setSavedBookList}) {
+function SavedBooks({ savedBookList, setSavedBookList }) {
   const [savedBooks, setSavedBooks] = useState([]);
   const userId = localStorage.getItem("user_id");
   useEffect(() => {
@@ -17,13 +17,15 @@ function SavedBooks({savedBookList, setSavedBookList}) {
 
   return (
     <div>
+      <h1> Saved Books </h1>
       {savedBooks.map(savedBook => (
-        <Book 
+        <Book
           book={savedBook}
           savedBookList={savedBookList}
           setSavedBookList={setSavedBookList}
-          />
+        />
       ))}
+      
     </div>
   );
 }
