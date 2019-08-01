@@ -76,11 +76,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
       {/* <Modal trigger={
       <BookModal />} > */}
       <Card centered>
-        <Image
-          style={{ height: "350px", width: "100%" }}
-          src={`"https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg"`}
-          onClick={openModal}
-        />
+        <Image onClick={openModal} style={{ height: '350px', width: "100%" }} src={`${book.image}?default=false`} onError={(e)=>{e.target.onerror = null; e.target.src=require("../imgs/cover_not_found.png") }}/>
         <Card.Content style={{ maxHeight: "300px" }}>
           <Card.Header onClick={openModal}>{book.title}</Card.Header>
           <Card.Meta onClick={openModal}>{book.author}</Card.Meta>
