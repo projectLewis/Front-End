@@ -11,26 +11,31 @@ function Book({ book, savedBookList, setSavedBookList }) {
   const [bookToDelete, setBookToDelete] = useState(false);
   const [liked, setLiked] = useState(false);
 
-  function toggleClick() {
-    setLiked(!liked);
-  }
-
   const userId = localStorage.getItem("user_id");
 
-  // useEffect(() => {
-  //   if (bookToSave) {
-  //     axiosWithAuth()
-  //       .post(
-  //         `https://better-reads-db.herokuapp.com/api/books/save/${userId}`,
-  //         bookToSave,
-  //       )
-  //       .then(res => {
-  //         console.log(res);
-  //         setSavedBookList(res.data);
-  //       })
-  //       .catch(res => console.log(res));
-  //   }
-  // }, [bookToSave, setSavedBookList, userId]);
+  useEffect(() => {
+    (console.log('page load'))
+    savedBookList.forEach(savedBook => {
+      if (savedBook.isbn === book.isbn) {
+        setLiked(true)
+      }
+    })
+  }, [book.isbn, savedBookList])
+
+  useEffect(() => {
+    if (bookToSave) {
+      axiosWithAuth()
+        .post(
+          `https://better-reads-db.herokuapp.com/api/books/save/${userId}`,
+          bookToSave,
+        )
+        .then(res => {
+          console.log(res);
+          setSavedBookList(res.data);
+        })
+        .catch(res => console.log(res));
+    }
+  }, [bookToSave, setSavedBookList, userId]);
 
   useEffect(() => {
     if (bookToDelete) {
@@ -48,24 +53,16 @@ function Book({ book, savedBookList, setSavedBookList }) {
   }, [bookToDelete, setSavedBookList, userId]);
 
   function addToSavedList() {
-    console.log("book's title", book.title);
-
-    setBookToSave(prevBook =>
-        {
-          prevBook = {
+    setBookToSave({
           title: book.title,
           author: book.author,
           isbn: book.isbn,
-        }
-        return prevBook
-      },
-    );
-    console.log("bookToSave", bookToSave);
+      });
   }
 
-  // function deleteFromSavedList() {
-  //   setBookToDelete(book.id);
-  // }
+  function deleteFromSavedList() {
+    setBookToDelete(book.id);
+  }
 
   function openModal() {
     setModalOpen(true);
@@ -87,11 +84,11 @@ function Book({ book, savedBookList, setSavedBookList }) {
           ) : (
             <Icon className="heart outline" onClick={addToSavedList} />
           )} */}
-          {liked ? (
+          {liked ? 
             <Icon className="heart" onClick={addToSavedList} />
-          ) : (
-            <Icon className="heart outline" onClick={addToSavedList} />
-          )}
+           : 
+            <Icon className="heart outline" onClick={deleteFromSavedList} />
+          }
         </Card.Content>
       </Card>
 
