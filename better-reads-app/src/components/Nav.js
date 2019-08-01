@@ -1,35 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from 'semantic-ui-react';
-
+import { Button, Image } from 'semantic-ui-react';
 function Nav(props) {
   return (
-  <div>
-    <nav>
-        <Link to="/login">
-          <Button className="button-nav" type="login">
-          Login
-          </Button>
-        </Link>
-        <Link to="/register">
-          <Button className="button-nav" type="register">
-            Sign up
-          </Button>
-        </Link>
-        <Link to="/">
-          <Button className="button-nav" type="search">
-            Search Books
-          </Button>
-        </Link>
+    <nav className="navigation">
+      <div>
+        <div className="logo">
+          <Image className="logo__img" alt="betterreads logo" src={require("../imgs/logo_transparent.png")} />
+        </div>
+      </div>
 
-
-
+      <div className="nav-links">
+      <Link to="/register"> Register</Link>
+      <Link to="/login"> Login</Link>
+      <Link to="/search"> Search</Link>
+      </div>
     </nav>
-  </div>
-
   );
 }
-
 Nav.propTypes = {};
-
 export default Nav;
