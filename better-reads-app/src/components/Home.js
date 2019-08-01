@@ -37,7 +37,7 @@ function Home({
     if (searchTerm) {
       axios
         .get(
-          `http://better-reads-cors-vector-2.rvpsipbyha.us-east-1.elasticbeanstalk.com/${searchTerm}`,
+          `https://better-reads-cors-vector-2.rvpsipbyha.us-east-1.elasticbeanstalk.com/${searchTerm}`,
         )
         .then(res => {
           console.log("res from get", res);
