@@ -43,19 +43,23 @@ const BookModal = ({ isbn }) => {
 
       <a href={book.previewLink}
         style={{ display: "table-cell" }}
-        target="_blank">
+        target="_blank"
+        rel="noopener noreferrer"
+        >
         <Icon className="google" color="blue" />
       </a>
 
       <a href={`https://www.goodreads.com/search?q=${isbn}`}
       style={{ display: "table-cell" }}
-      target="_blank">
+      target="_blank"
+      rel="noopener noreferrer">
         <Icon className="goodreads g" color="yellow" />
       </a>
 
       <a href={`https://www.amazon.com/s?k=${isbn}&i=stripbooks&ref=nb_sb_noss`}
       style={{ display: "table-cell" }}
-      target="_blank">
+      target="_blank"
+      rel="noopener noreferrer">
         <Icon className="amazon" color="orange" />
       </a>
     </>
