@@ -5,7 +5,7 @@ import BookModal from "./BookModal";
 import { axiosWithAuth } from "../functions/authorization.js";
 
 function Book({ book, savedBookList, setSavedBookList }) {
-  // think about what to do for images that don't exist as they are truthy
+ 
   const [isModalOpen, setModalOpen] = useState(false);
   const [bookToSave, setBookToSave] = useState(null);
   const [bookToDelete, setBookToDelete] = useState(null);

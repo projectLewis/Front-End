@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Input, Checkbox, Form, Image } from "semantic-ui-react";
+import { Button, Input, Form, Image } from "semantic-ui-react";
 
 import styled from "styled-components";
 
@@ -36,11 +36,13 @@ function Home({
   useEffect(() => {
     if (searchTerm) {
       axios
-        .get(
-          `http://better-reads-cors-vector-2.rvpsipbyha.us-east-1.elasticbeanstalk.com/${searchTerm}`,
-        )
+        .post("https://better-reads-db.herokuapp.com/api/books/recommend", {
+          description: searchTerm,
+        })
         .then(res => {
-          setRecommendedBooks(res.data);
+          console.log(searchTerm);
+          console.log(res);
+          setRecommendedBooks(res.data.list);
           setSearchTerm("");
         })
         .catch(err => console.log(err));
