@@ -14,6 +14,8 @@ function Book({ book, savedBookList, setSavedBookList }) {
 
   useEffect(() => {
     for (let i = 0; i < savedBookList.length; i++) {
+      console.log("savedBookList element isbn", savedBookList[i].isbn);
+      console.log("book element isbn", book.isbn);
       if (savedBookList[i].isbn === book.isbn) {
         return setLiked(true);
       }
