@@ -16,6 +16,15 @@ const Wrapper = styled.div`
   }
 `;
 
+const HomeImage = styled.img`
+  max-height: 200px;
+  width: 300px;
+  padding: 0px;
+  @media (max-width: 600px) {
+    margin: auto;
+  }
+`;
+
 function Home({
   savedBookList,
   setSavedBookList,
@@ -66,20 +75,19 @@ function Home({
   return (
     <div style={{ minHeight: "80vh" }}>
       <Wrapper>
-        <Image
-          src={require("../imgs/undraw_reading_0re1.svg")}
-          style={{ maxHeight: "200px", width: "300px", padding: "0px" }}
-          fluid
+        <HomeImage
+          src={require("../imgs/undraw_reading_0re1.svg")} fluid 
         />
         <div
           style={{
             alignSelf: "center",
             fontSize: "1.3rem",
-            width: "550px",
+            maxWidth: "550px",
             lineHeight: "1.6em",
           }}>
-          <h1>Search for books</h1>Describe your perfect novel and let us find
-          the best books for you.
+          <h1>Search for books</h1>
+<p>Describe your perfect novel and let us find
+          the best books for you.</p>
         </div>
       </Wrapper>
       <Form onSubmit={handleSubmit}>
