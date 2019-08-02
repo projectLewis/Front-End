@@ -5,6 +5,7 @@ import { Header, Dimmer, Loader, Icon } from "semantic-ui-react";
 const BookModal = ({ isbn }) => {
   const [book, addBook] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [foundStatus, setFoundStatus] = useState(null);
   useEffect(() => {
     if (isbn) {
       Axios.get(
@@ -13,15 +14,23 @@ const BookModal = ({ isbn }) => {
         console.log(data);
         addBook(data.data.items[0].volumeInfo);
         setIsLoading(false);
+        setFoundStatus(true);
+      }).catch(err => {
+        setFoundStatus(false);
+        setIsLoading(false);
+        console.error(err);
       });
     }
   }, [isbn]);
-
-  return isLoading ? (
+  if (isLoading) {
+  return  (
     <Dimmer inverted active>
       <Loader inverted> Loading </Loader>
     </Dimmer>
-  ) : (
+    )
+  }
+ if (isLoading === false && foundStatus === true) {
+   return (
     <>
       <Header>
         {book.title} <Header sub>{book.authors}</Header>{" "}
@@ -44,6 +53,17 @@ const BookModal = ({ isbn }) => {
       </a>
     </>
   );
+}
+if (isLoading === false && foundStatus === false) {
+  return (
+   <>
+     <Header>
+      Well this is awkward...
+     </Header>
+     <p>Sorry... our sales endpoint couldn't find details for this book. Please try another</p>
+   </>
+ );
+}
 };
 
 export default BookModal;
