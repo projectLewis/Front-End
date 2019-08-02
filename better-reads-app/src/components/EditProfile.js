@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Checkbox, Input, Button } from "semantic-ui-react";
+import { Form, Checkbox, Input, Button, Container } from "semantic-ui-react";
 import axios from "axios";
 import { axiosWithAuth } from "../functions/authorization";
 
@@ -63,54 +63,25 @@ function EditProfile(props) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <Input
-          name="username"
-          placeholder="username"
-          onChange={handleChanges}
-          value={userData.username}
-        />
-        <Input
-          name="password"
-          placeholder="password"
-          onChange={handleChanges}
-          value={userData.name}
-        />
-        <Input
-          name="firstName"
-          placeholder="First Name"
-          onChange={handleChanges}
-          value={userData.firstName}
-        />
-        <Input
-          name="lastName"
-          placeholder="Last Name"
-          onChange={handleChanges}
-          value={userData.lastName}
-        />
-        <Input
-          name="bio"
-          placeholder="Bio"
-          onChange={handleChanges}
-          value={userData.bio}
-        />
-        <Input
-          name="email"
-          placeholder="email"
-          onChange={handleChanges}
-          value={userData.email}
-        />
-        <Checkbox toggle label="email notifications" onChange={handleChanges} />
-        <Input
-          name="country"
-          placeholder="country"
-          onChange={handleChanges}
-          value={userData.country}
-        />
-        <Button>Update</Button>
-      </form>
-    </div>
+    <Container style={{ minHeight: "80vh" }}>
+      <Form onSubmit={handleSubmit} style={{ margin: "40px" }}>
+        <Form.Group widths="equal">
+          <Form.Input fluid placeholder="Username" />
+          <Form.Input fluid placeholder="Password" type="password" />
+          <Form.Input fluid placeholder="First name" />
+          <Form.Input fluid placeholder="Last name" />
+        </Form.Group>
+        <Form.TextArea placeholder="Tell us more about you..." />
+        <Form.Group widths="equal">
+          <Form.Input fluid placeholder="Country" />
+          <Form.Input fluid placeholder="Email" type="email" />
+        </Form.Group>
+        <Form.Group widths="equal">
+          <Form.Checkbox toggle label="Email notifications" />
+        </Form.Group>
+        <Form.Button>Update</Form.Button>
+      </Form>
+    </Container>
   );
 }
 
