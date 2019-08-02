@@ -5,6 +5,7 @@ function Nav(props) {
   function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user_id");
+    localStorage.removeItem("username");
     props.history.push("/");
   }
   if (localStorage.getItem("token")) {
