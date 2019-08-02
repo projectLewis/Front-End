@@ -41,15 +41,21 @@ const BookModal = ({ isbn }) => {
       <p>{book.pageCount} pages</p>
       {book.averageRating ? <p>Rating: {book.averageRating}/5</p> : null}
 
-      <a href={book.previewLink}>
+      <a href={book.previewLink}
+        style={{ display: "table-cell" }}
+        target="_blank">
         <Icon className="google" color="blue" />
       </a>
 
-      <a href={`https://www.goodreads.com/search?q=${isbn}`}>
+      <a href={`https://www.goodreads.com/search?q=${isbn}`}
+      style={{ display: "table-cell" }}
+      target="_blank">
         <Icon className="goodreads g" color="light-brown" />
       </a>
 
-      <a href={`https://www.amazon.com/s?k=${isbn}&i=stripbooks&ref=nb_sb_noss`}>
+      <a href={`https://www.amazon.com/s?k=${isbn}&i=stripbooks&ref=nb_sb_noss`}
+      style={{ display: "table-cell" }}
+      target="_blank">
         <Icon className="amazon" color="orange" />
       </a>
     </>
