@@ -1,12 +1,7 @@
 import React from "react";
 import Book from "./Book";
 
-function RecommendedBooks({
-  recommendedBooks,
-  savedBookList,
-  setSavedBookList,
-}) {
-
+function RecommendedBooks({ recommendedBooks, savedBookList, handleSave }) {
   return (
     <div
       className="bookFlexWrapper"
@@ -23,7 +18,7 @@ function RecommendedBooks({
           key={recommendedBook.isbn}
           recommendedBook={recommendedBook}
           savedBookList={savedBookList}
-          setSavedBookList={setSavedBookList}
+          handleSave={handleSave}
         />
       ))}
     </div>

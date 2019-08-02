@@ -27,7 +27,7 @@ const HomeImage = styled.img`
 
 function Home({
   savedBookList,
-  setSavedBookList,
+  handleSave,
   recommendedBooks,
   setRecommendedBooks,
 }) {
@@ -104,7 +104,7 @@ function Home({
           <RecommendedBooks
             recommendedBooks={recommendedBooks}
             savedBookList={savedBookList}
-            setSavedBookList={setSavedBookList}
+            handleSave={handleSave}
           />
         )
       )}

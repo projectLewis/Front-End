@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Book from "./Book.js";
 import Axios from "axios";
 
-function SavedBooks({ savedBookList, setSavedBookList }) {
+function SavedBooks({ savedBookList, handleSave }) {
   const [savedBooks, setSavedBooks] = useState([]);
   const userId = localStorage.getItem("user_id");
   useEffect(() => {
@@ -31,7 +31,7 @@ function SavedBooks({ savedBookList, setSavedBookList }) {
             key={savedBook.id}
             recommendedBook={savedBook}
             savedBookList={savedBookList}
-            setSavedBookList={setSavedBookList}
+            handleSave={handleSave}
           />
         ))}
       </div>

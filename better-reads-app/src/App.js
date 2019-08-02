@@ -18,6 +18,11 @@ function App() {
 
   const userId = localStorage.getItem("user_id");
 
+  function handleSave(newSavedBookList) {
+    setSavedBookList(newSavedBookList);
+    console.log("savedBookList within App", savedBookList);
+  }
+
   // get users savedbooklist
   useEffect(() => {
     if (localStorage.getItem("user_id")) {
@@ -41,7 +46,7 @@ function App() {
             <Home
               {...props}
               savedBookList={savedBookList}
-              setSavedBookList={setSavedBookList}
+              handleSave={handleSave}
               recommendedBooks={recommendedBooks}
               setRecommendedBooks={setRecommendedBooks}
             />
@@ -57,7 +62,7 @@ function App() {
             <SavedBooks
               {...props}
               savedBookList={savedBookList}
-              setSavedBookList={setSavedBookList}
+              handleSave={handleSave}
               recommendedBooks={recommendedBooks}
               setRecommendedBooks={setRecommendedBooks}
             />
