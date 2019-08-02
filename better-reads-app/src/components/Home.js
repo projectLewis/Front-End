@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Input, Form, Image, Dimmer, Loader } from "semantic-ui-react";
+import { Button, Input, Form, Dimmer, Loader } from "semantic-ui-react";
 
 import styled from "styled-components";
 
