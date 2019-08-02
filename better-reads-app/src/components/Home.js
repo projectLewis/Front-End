@@ -34,6 +34,8 @@ function Home({
   function handleChanges(e) {
     setSearchInput(e.target.value);
   }
+
+  // search books 
   useEffect(() => {
     if (searchTerm) {
       setIsLoading(true);
@@ -52,6 +54,7 @@ function Home({
     }
   }, [searchTerm, setRecommendedBooks]);
 
+  // get users savedbooklist
   useEffect(() => {
     if (localStorage.getItem("user_id")) {
       axios
