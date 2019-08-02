@@ -43,6 +43,8 @@ function Home({
   function handleChanges(e) {
     setSearchInput(e.target.value);
   }
+
+  // search books
   useEffect(() => {
     if (searchTerm) {
       setIsLoading(true);
@@ -61,6 +63,7 @@ function Home({
     }
   }, [searchTerm, setRecommendedBooks]);
 
+  // get users savedbooklist
   useEffect(() => {
     if (localStorage.getItem("user_id")) {
       axios
@@ -75,9 +78,7 @@ function Home({
   return (
     <div style={{ minHeight: "80vh" }}>
       <Wrapper>
-        <HomeImage
-          src={require("../imgs/undraw_reading_0re1.svg")} fluid 
-        />
+        <HomeImage src={require("../imgs/undraw_reading_0re1.svg")} fluid />
         <div
           style={{
             alignSelf: "center",
@@ -85,9 +86,15 @@ function Home({
             maxWidth: "550px",
             lineHeight: "1.6em",
           }}>
+          <h3 style={{ marginBottom: "50px" }}>
+            Welcome{" "}
+            {localStorage.getItem("username") &&
+              `${localStorage.getItem("username")}`}
+          </h3>
           <h1>Search for books</h1>
-<p>Describe your perfect novel and let us find
-          the best books for you.</p>
+          <p>
+            Describe your perfect novel and let us find the best books for you.
+          </p>
         </div>
       </Wrapper>
       <Form onSubmit={handleSubmit}>

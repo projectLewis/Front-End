@@ -8,7 +8,7 @@ function Login(props) {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
 
-  function handleRegister(e) {
+  function handleLogin(e) {
     e.preventDefault();
     setUser({ username, password });
   }
@@ -21,6 +21,7 @@ function Login(props) {
           console.log("login successful, res is:", res);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("user_id", res.data.user.id);
+          localStorage.setItem("username", res.data.user.username);
           setUsername("");
           setPassword("");
         })
@@ -38,7 +39,7 @@ function Login(props) {
       />
 
       <div className="buttons">
-        <Form className="form" onSubmit={handleRegister}>
+        <Form className="form" onSubmit={handleLogin}>
           <div className="inputForm">
             <Input
               className="input"
@@ -51,6 +52,7 @@ function Login(props) {
           <div className="inputForm">
             <Input
               className="input"
+              autocomplete="off"
               name="password"
               placeholder="password"
               type="password"
@@ -62,7 +64,6 @@ function Login(props) {
             <Button>Login</Button>
           </div>
           <div>
-            {" "}
             Don't have an account yet?
             <Link to="/register"> Register</Link>
           </div>
