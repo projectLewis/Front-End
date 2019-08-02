@@ -3,15 +3,15 @@ import Axios from "axios";
 import { Header, Dimmer, Loader, Icon } from "semantic-ui-react";
 
 const BookModal = ({ isbn }) => {
-  const [book, addBook] = useState([]);
+  const [book, setBook] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     if (isbn) {
       Axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`,
-      ).then(data => {
-        console.log(data);
-        addBook(data.data.items[0].volumeInfo);
+      ).then(res => {
+        console.log(res);
+        setBook(res.data.items[0].volumeInfo);
         setIsLoading(false);
       });
     }
@@ -36,7 +36,7 @@ const BookModal = ({ isbn }) => {
       </a>
 
       <a href="https://goodreads.com">
-        <Icon className="goodreads g" color="light-brown" />
+        <Icon className="goodreads g" color="yellow" />
       </a>
 
       <a href="https://amazon.com">
