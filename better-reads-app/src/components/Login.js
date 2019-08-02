@@ -18,7 +18,6 @@ function Login(props) {
       axios
         .post("https://better-reads-db.herokuapp.com/api/auth/login", user)
         .then(res => {
-          console.log("login successful, res is:", res);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("user_id", res.data.user.id);
           localStorage.setItem("username", res.data.user.username);
@@ -26,7 +25,7 @@ function Login(props) {
           setPassword("");
         })
         .then(res => props.history.push("/"))
-        .catch(err => console.log(err));
+        .catch(err => console.error(err));
     }
   }, [props.history, user]);
 

@@ -49,29 +49,29 @@ function EditProfile(props) {
       axios
         .get(`https://better-reads-db.herokuapp.com/api/users/${userId}`)
         .then(res => {
-          console.log("this is the get response for user info", res);
           setUserData(res.data);
           setGettingUserData(false);
         })
-        .catch(console.log);
+        .catch(err => console.error(err));
     }
   }, [gettingUserData, userData, userId]);
 
   // update user info
   useEffect(() => {
     if (isUpdating) {
-      console.log(userData);
       axiosWithAuth()
         .put(
           `https://better-reads-db.herokuapp.com/api/auth/${userId}`,
           userData,
         )
         .then(res => {
-          console.log("updated user info", res);
           setUserData(res.data);
           setIsUpdating(false);
         })
-        .catch(err => console.log(err.message));
+        .catch(err => {
+          console.error(err)
+          console.log(err.message)
+        });
     }
   }, [isUpdating, userData, userId]);
 

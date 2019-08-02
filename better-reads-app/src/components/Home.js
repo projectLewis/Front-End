@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Input, Form, Image, Dimmer, Loader } from "semantic-ui-react";
+import { Button, Input, Form, Dimmer, Loader } from "semantic-ui-react";
 
 import styled from "styled-components";
 
@@ -53,13 +53,11 @@ function Home({
           description: searchTerm,
         })
         .then(res => {
-          console.log(searchTerm);
-          console.log("res", res);
           setRecommendedBooks(res.data.list);
           setSearchTerm("");
           setIsLoading(false);
         })
-        .catch(err => console.log(err));
+        .catch(err => console.error(err));
     }
   }, [searchTerm, setRecommendedBooks]);
 
@@ -71,7 +69,7 @@ function Home({
         .then(res => {
           setSavedBookList(res.data);
         })
-        .catch(err => console.log(err));
+        .catch(err => console.error(err));
     }
   }, [setSavedBookList, userId]);
 
