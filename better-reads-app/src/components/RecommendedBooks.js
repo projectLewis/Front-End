@@ -18,10 +18,10 @@ function RecommendedBooks({
         padding: "0 20px",
         justifyContent: "center",
       }}>
-      {recommendedBooks.map(book => (
+      {recommendedBooks.map(recommendedBook => (
         <Book
-          key={book.isbn}
-          book={book}
+          key={recommendedBook.isbn}
+          recommendedBook={recommendedBook}
           savedBookList={savedBookList}
           setSavedBookList={setSavedBookList}
         />

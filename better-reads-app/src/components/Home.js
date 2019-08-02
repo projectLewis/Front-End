@@ -34,12 +34,12 @@ function Home({
   const [searchInput, setSearchInput] = useState("");
   const [searchTerm, setSearchTerm] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const userId = localStorage.getItem("user_id");
 
   function handleSubmit(e) {
     e.preventDefault();
     setSearchTerm(searchInput);
   }
+
   function handleChanges(e) {
     setSearchInput(e.target.value);
   }
@@ -60,18 +60,6 @@ function Home({
         .catch(err => console.error(err));
     }
   }, [searchTerm, setRecommendedBooks]);
-
-  // get users savedbooklist
-  useEffect(() => {
-    if (localStorage.getItem("user_id")) {
-      axios
-        .get(`https://better-reads-db.herokuapp.com/api/users/list/${userId}`)
-        .then(res => {
-          setSavedBookList(res.data);
-        })
-        .catch(err => console.error(err));
-    }
-  }, [setSavedBookList, userId]);
 
   return (
     <div style={{ minHeight: "80vh" }}>

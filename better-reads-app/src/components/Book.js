@@ -5,7 +5,7 @@ import BookModal from "./BookModal";
 
 import { axiosWithAuth } from "../functions/authorization.js";
 
-function Book({ book, savedBookList, setSavedBookList }) {
+function Book({ recommendedBook, savedBookList, setSavedBookList }) {
   const [isModalOpen, setModalOpen] = useState(false);
   const [bookToSave, setBookToSave] = useState(null);
   const [bookToDeleteId, setBookToDeleteId] = useState(null);
@@ -15,12 +15,12 @@ function Book({ book, savedBookList, setSavedBookList }) {
 
   useEffect(() => {
     for (let i = 0; i < savedBookList.length; i++) {
-      if (savedBookList[i].isbn === book.isbn) {
+      if (savedBookList[i].isbn === recommendedBook.isbn) {
         return setLiked(true);
       }
     }
     return setLiked(false);
-  }, [book.isbn, liked, savedBookList]);
+  }, [recommendedBook.isbn, liked, savedBookList]);
 
   useEffect(() => {
     if (bookToSave) {
@@ -38,10 +38,10 @@ function Book({ book, savedBookList, setSavedBookList }) {
   }, [bookToSave, setSavedBookList, userId]);
 
   useEffect(() => {
-    const bookToDeleteObject = {
-      book_id: bookToDeleteId,
-    };
     if (bookToDeleteId) {
+      const bookToDeleteObject = {
+        book_id: bookToDeleteId,
+      };
       axiosWithAuth()
         .delete(
           `https://better-reads-db.herokuapp.com/api/books/save/${userId}`,
@@ -58,14 +58,14 @@ function Book({ book, savedBookList, setSavedBookList }) {
 
   function addToSavedList() {
     setBookToSave({
-      title: book.title,
-      author: book.author,
-      isbn: book.isbn,
+      title: recommendedBook.title,
+      author: recommendedBook.author,
+      isbn: recommendedBook.isbn,
     });
   }
 
   function deleteFromSavedList() {
-    setBookToDeleteId(`${book.isbn}`);
+    setBookToDeleteId(`${recommendedBook.isbn}`);
     // setBookToDelete(prevBook => {
     //   prevBook = { data: { isbn: `${book.isbn}` } };
     //   return prevBook;
@@ -85,7 +85,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
           onClick={openModal}
           style={{ height: "350px", width: "100%" }}
           src={`https://covers.openlibrary.org/b/isbn/${
-            book.isbn
+            recommendedBook.isbn
           }-M.jpg?default=false`}
           onError={e => {
             e.target.onerror = null;
@@ -93,8 +93,8 @@ function Book({ book, savedBookList, setSavedBookList }) {
           }}
         />
         <Card.Content style={{ maxHeight: "300px" }}>
-          <Card.Header onClick={openModal}>{book.title}</Card.Header>
-          <Card.Meta onClick={openModal}>{book.author}</Card.Meta>
+          <Card.Header onClick={openModal}>{recommendedBook.title}</Card.Header>
+          <Card.Meta onClick={openModal}>{recommendedBook.author}</Card.Meta>
           {localStorage.getItem("token") && liked ? (
             <Icon className="heart" color="red" onClick={deleteFromSavedList} />
           ) : (
@@ -105,7 +105,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
       <Modal size={"large"} open={isModalOpen} onClose={closeModal}>
         <Modal.Header>More info</Modal.Header>
         <Modal.Content>
-          <BookModal isbn={book.isbn} />
+          <BookModal isbn={recommendedBook.isbn} />
         </Modal.Content>
         <Modal.Actions>
           <Button negative onClick={closeModal}>

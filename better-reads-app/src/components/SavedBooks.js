@@ -12,28 +12,28 @@ function SavedBooks({ savedBookList, setSavedBookList }) {
       })
       .catch(err => console.error(err));
   }, [userId]);
-  
+
   return (
     <div>
       <h1> Saved Books </h1>
       <div
-      className="bookFlexWrapper"
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        margin: "40px auto",
-        maxWidth: "1000px",
-        padding: "0 20px",
-        justifyContent: "center",
-      }}>
-      {savedBooks.map(savedBook => (
-        <Book
-          key={savedBook.id}
-          book={savedBook}
-          savedBookList={savedBookList}
-          setSavedBookList={setSavedBookList}
-        />
-      ))}
+        className="bookFlexWrapper"
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          margin: "40px auto",
+          maxWidth: "1000px",
+          padding: "0 20px",
+          justifyContent: "center",
+        }}>
+        {savedBooks.map(savedBook => (
+          <Book
+            key={savedBook.id}
+            recommendedBook={savedBook}
+            savedBookList={savedBookList}
+            setSavedBookList={setSavedBookList}
+          />
+        ))}
       </div>
     </div>
   );
