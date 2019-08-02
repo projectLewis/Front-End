@@ -6,7 +6,7 @@ function RecommendedBooks({
   savedBookList,
   setSavedBookList,
 }) {
-  
+
   return (
     <div
       className="bookFlexWrapper"
@@ -20,7 +20,7 @@ function RecommendedBooks({
       }}>
       {recommendedBooks.map(book => (
         <Book
-          key={book.ISBN}
+          key={book.isbn}
           book={book}
           savedBookList={savedBookList}
           setSavedBookList={setSavedBookList}

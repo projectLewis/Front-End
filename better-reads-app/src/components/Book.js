@@ -5,7 +5,6 @@ import BookModal from "./BookModal";
 import { axiosWithAuth } from "../functions/authorization.js";
 
 function Book({ book, savedBookList, setSavedBookList }) {
- 
   const [isModalOpen, setModalOpen] = useState(false);
   const [bookToSave, setBookToSave] = useState(null);
   const [bookToDelete, setBookToDelete] = useState(null);
@@ -15,12 +14,12 @@ function Book({ book, savedBookList, setSavedBookList }) {
 
   useEffect(() => {
     for (let i = 0; i < savedBookList.length; i++) {
-      if (savedBookList[i].isbn === book.ISBN) {
+      if (savedBookList[i].isbn === book.isbn) {
         return setLiked(true);
       }
     }
     return setLiked(false);
-  }, [book.ISBN, savedBookList]);
+  }, [book.isbn, savedBookList]);
 
   useEffect(() => {
     if (bookToSave) {
@@ -56,13 +55,13 @@ function Book({ book, savedBookList, setSavedBookList }) {
     setBookToSave({
       title: book.title,
       author: book.author,
-      isbn: book.ISBN,
+      isbn: book.isbn,
     });
   }
 
   function deleteFromSavedList() {
     setBookToDelete(prevBook => {
-      prevBook = { data: { isbn: `${book.ISBN}` } };
+      prevBook = { data: { isbn: `${book.isbn}` } };
       console.log(prevBook);
       return prevBook;
     });
@@ -82,8 +81,8 @@ function Book({ book, savedBookList, setSavedBookList }) {
         <Image
           onClick={openModal}
           style={{ height: "350px", width: "100%" }}
-          src={`https://covers.openlibrary.org/b/ISBN/${
-            book.ISBN
+          src={`https://covers.openlibrary.org/b/isbn/${
+            book.isbn
           }-M.jpg?default=false`}
           onError={e => {
             e.target.onerror = null;
@@ -93,7 +92,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
         <Card.Content style={{ maxHeight: "300px" }}>
           <Card.Header onClick={openModal}>{book.title}</Card.Header>
           <Card.Meta onClick={openModal}>{book.author}</Card.Meta>
-          {/* {savedBookList.find(savedBook => savedBook.ISBN === book.ISBN) ? (
+          {/* {savedBookList.find(savedBook => savedBook.isbn === book.isbn) ? (
             <Icon className="heart" onClick={deleteFromSavedList} />
           ) : (
             <Icon className="heart outline" onClick={addToSavedList} />
@@ -110,7 +109,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
       <Modal size={"large"} open={isModalOpen} onClose={closeModal}>
         <Modal.Header>More info</Modal.Header>
         <Modal.Content>
-          <BookModal ISBN={book.ISBN} />
+          <BookModal isbn={book.isbn} />
         </Modal.Content>
         <Modal.Actions>
           <Button negative onClick={closeModal}>

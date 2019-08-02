@@ -51,7 +51,7 @@ function Home({
         })
         .then(res => {
           console.log(searchTerm);
-          console.log(res);
+          console.log("res", res);
           setRecommendedBooks(res.data.list);
           setSearchTerm("");
           setIsLoading(false);
