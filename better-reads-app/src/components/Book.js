@@ -91,7 +91,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
         <Card.Content style={{ maxHeight: "300px" }}>
           <Card.Header onClick={openModal}>{book.title}</Card.Header>
           <Card.Meta onClick={openModal}>{book.author}</Card.Meta>
-          <SaveIcon liked={liked} addToSavedList={addToSavedList} deleteFromSavedList={deleteFromSavedList}/>
+          {localStorage.getItem("token") && <SaveIcon liked={liked} addToSavedList={addToSavedList} deleteFromSavedList={deleteFromSavedList}/>}
         </Card.Content>
       </Card>
 
