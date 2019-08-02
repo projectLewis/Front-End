@@ -8,13 +8,14 @@ const BookModal = ({ isbn }) => {
   const [foundStatus, setFoundStatus] = useState(null);
   useEffect(() => {
     if (isbn) {
+      console.log(isbn)
       Axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`,
       ).then(data => {
         console.log(data);
         addBook(data.data.items[0].volumeInfo);
-        setIsLoading(false);
         setFoundStatus(true);
+        setIsLoading(false);
       }).catch(err => {
         setFoundStatus(false);
         setIsLoading(false);
@@ -44,11 +45,11 @@ const BookModal = ({ isbn }) => {
         <Icon className="google" color="blue" />
       </a>
 
-      <a href="https://goodreads.com">
+      <a href={`https://www.goodreads.com/search?q=${isbn}`}>
         <Icon className="goodreads g" color="light-brown" />
       </a>
 
-      <a href="https://amazon.com">
+      <a href={`https://www.amazon.com/s?k=${isbn}&i=stripbooks&ref=nb_sb_noss`}>
         <Icon className="amazon" color="orange" />
       </a>
     </>
