@@ -8,11 +8,9 @@ const BookModal = ({ isbn }) => {
   const [foundStatus, setFoundStatus] = useState(null);
   useEffect(() => {
     if (isbn) {
-      console.log(isbn)
       Axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`,
       ).then(data => {
-        console.log(data);
         setBook(data.data.items[0].volumeInfo);
         setFoundStatus(true);
         setIsLoading(false);

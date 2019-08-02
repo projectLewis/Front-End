@@ -10,7 +10,7 @@ function SavedBooks({ savedBookList, setSavedBookList }) {
       .then(res => {
         setSavedBooks(res.data);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }, [userId]);
   
   return (

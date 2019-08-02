@@ -21,10 +21,10 @@ function Register({ history }) {
           newUser,
         )
         .then(res => {
-          console.log("res", res);
           setUsername("");
           setPassword("");
         })
+        // logs you in after a successful register
         .then(
           () =>
             axios
@@ -33,15 +33,12 @@ function Register({ history }) {
                 newUser,
               )
               .then(res => {
-                console.log("login successful, res is:", res);
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("user_id", res.data.user.id);
                 localStorage.setItem("username", res.data.user.username);
                 localStorage.getItem("token") && history.push("/");
               }),
-          // .then(history.push("/")),
         )
-        // .then(history.push("/"))
         .catch(err => console.log(err));
     }
   }, [newUser, history]);
