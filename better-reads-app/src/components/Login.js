@@ -19,7 +19,6 @@ function Login(props) {
         .post("https://better-reads-db.herokuapp.com/api/auth/login", user)
         .then(res => {
           console.log("login successful, res is:", res);
-    
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("user_id", res.data.user.id);
           setUsername("");
