@@ -51,6 +51,7 @@ function Login(props) {
           <div className="inputForm">
             <Input
               className="input"
+              autocomplete="off"
               name="password"
               placeholder="password"
               type="password"

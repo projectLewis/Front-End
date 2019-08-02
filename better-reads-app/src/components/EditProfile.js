@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Container } from "semantic-ui-react";
+import { Form, Container, Dimmer, Loader } from "semantic-ui-react";
 import axios from "axios";
 import { axiosWithAuth } from "../functions/authorization";
 
@@ -14,6 +14,7 @@ function EditProfile(props) {
     country: "",
     bio: "",
   });
+
   const [gettingUserData, setGettingUserData] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -24,11 +25,12 @@ function EditProfile(props) {
     const updatedData = {
       username: userData.username,
       password: userData.password,
-      firstName: userData.password,
-      email: userData.email,
-      emailNotifications: userData.emailNotifications,
-      country: userData.country,
-      bio: userData.bio,
+      firstName: userData.firstName || "",
+      lastName: userData.lastName || "",
+      email: userData.email || "",
+      emailNotifications: userData.emailNotifications || false,
+      country: userData.country || "",
+      bio: userData.bio || "",
     };
     setUserData(updatedData);
     setIsUpdating(true);
@@ -58,10 +60,10 @@ function EditProfile(props) {
   // update user info
   useEffect(() => {
     if (isUpdating) {
-      console.log(userData)
+      console.log(userData);
       axiosWithAuth()
         .put(
-          `https://better-reads-db.herokuapp.com/api/users/${userId}`,
+          `https://better-reads-db.herokuapp.com/api/auth/${userId}`,
           userData,
         )
         .then(res => {
@@ -79,22 +81,26 @@ function EditProfile(props) {
       [e.target.name]: e.target.value,
     });
   };
-
-  console.log(userData);
-
-  return (
+  return isUpdating ? (
+    <Dimmer inverted active>
+      <Loader inverted> Loading </Loader>
+    </Dimmer>
+  ) : (
     <Container style={{ minHeight: "80vh" }}>
       <Form onSubmit={handleSubmit} style={{ margin: "40px" }}>
         <Form.Group widths="equal">
           <Form.Input
             fluid
+            required
             name="username"
             placeholder="Username"
             onChange={handleChanges}
             value={userData.username}
           />
           <Form.Input
+            autocomplete="off"
             fluid
+            required
             name="password"
             placeholder="Password"
             type="password"
