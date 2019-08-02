@@ -14,7 +14,7 @@ function Nav(props) {
 
       <div className="logo">
         {/* <div className="logo"> */}
-        <Image className="logo__img" alt="betterreads logo" src={require("../imgs/br-logo.png")} />
+        <Link to="/"><Image className="logo__img" alt="betterreads logo" src={require("../imgs/br-logo.png")} /></Link>
         {/* </div> */}
       </div>
 
