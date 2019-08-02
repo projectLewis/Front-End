@@ -42,6 +42,7 @@ function App() {
 
   return (
     <div className="App">
+      <div className="test">
       <Route path="/" component={Nav} />
       <Route
         exact
@@ -85,6 +86,7 @@ function App() {
           />
         )}
       />
+      </div>
       <Footer />
     </div>
 
