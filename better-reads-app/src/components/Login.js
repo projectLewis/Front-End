@@ -21,6 +21,7 @@ function Login(props) {
           console.log("login successful, res is:", res);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("user_id", res.data.user.id);
+          localStorage.setItem("username", res.data.user.username);
           setUsername("");
           setPassword("");
         })

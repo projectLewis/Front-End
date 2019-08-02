@@ -25,19 +25,21 @@ function Register({ history }) {
           setUsername("");
           setPassword("");
         })
-        .then(() =>
-          axios
-            .post(
-              "https://better-reads-db.herokuapp.com/api/auth/login",
-              newUser,
-            )
-            .then(res => {
-              console.log("login successful, res is:", res);
-              localStorage.setItem("token", res.data.token);
-              localStorage.setItem("user_id", res.data.user.id);
-              localStorage.getItem("token") && history.push("/");
-            })
-            // .then(history.push("/")),
+        .then(
+          () =>
+            axios
+              .post(
+                "https://better-reads-db.herokuapp.com/api/auth/login",
+                newUser,
+              )
+              .then(res => {
+                console.log("login successful, res is:", res);
+                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("user_id", res.data.user.id);
+                localStorage.setItem("username", res.data.user.username);
+                localStorage.getItem("token") && history.push("/");
+              }),
+          // .then(history.push("/")),
         )
         // .then(history.push("/"))
         .catch(err => console.log(err));
