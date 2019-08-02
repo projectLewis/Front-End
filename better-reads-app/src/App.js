@@ -40,8 +40,6 @@ function App() {
     // },
   ]);
 
-  console.log("recommended books array", recommendedBooks);
-
   return (
     <div className="App">
       <Route path="/" component={Nav} />
