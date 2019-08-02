@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Button, Input, Form, Image } from "semantic-ui-react";
+import {
+  Button,
+  Input,
+  Form,
+  Image,
+  Dimmer,
+  Loader,
+  Icon,
+} from "semantic-ui-react";
 
 import styled from "styled-components";
 
@@ -24,6 +32,7 @@ function Home({
 }) {
   const [searchInput, setSearchInput] = useState("");
   const [searchTerm, setSearchTerm] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const userId = localStorage.getItem("user_id");
 
   function handleSubmit(e) {
@@ -35,6 +44,7 @@ function Home({
   }
   useEffect(() => {
     if (searchTerm) {
+      setIsLoading(true);
       axios
         .post("https://better-reads-db.herokuapp.com/api/books/recommend", {
           description: searchTerm,
@@ -44,6 +54,7 @@ function Home({
           console.log(res);
           setRecommendedBooks(res.data.list);
           setSearchTerm("");
+          setIsLoading(false);
         })
         .catch(err => console.log(err));
     }
@@ -91,14 +102,18 @@ function Home({
         </Form.Field>
         <Button>Search</Button>
       </Form>
-      {recommendedBooks.length === 0 ? (
-        <div>Search something!</div>
+      {isLoading ? (
+        <Dimmer inverted active>
+          <Loader inverted> Loading </Loader>
+        </Dimmer>
       ) : (
-        <RecommendedBooks
-          recommendedBooks={recommendedBooks}
-          savedBookList={savedBookList}
-          setSavedBookList={setSavedBookList}
-        />
+        recommendedBooks.length !== 0 && (
+          <RecommendedBooks
+            recommendedBooks={recommendedBooks}
+            savedBookList={savedBookList}
+            setSavedBookList={setSavedBookList}
+          />
+        )
       )}
     </div>
   );
