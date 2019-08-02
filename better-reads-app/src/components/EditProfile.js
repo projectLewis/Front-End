@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Checkbox, Input, Button, Container } from "semantic-ui-react";
+import { Form, Container } from "semantic-ui-react";
 import axios from "axios";
 import { axiosWithAuth } from "../functions/authorization";
 
@@ -16,8 +16,22 @@ function EditProfile(props) {
   });
   const [gettingUserData, setGettingUserData] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);
+
   const userId = localStorage.getItem("user_id");
-  console.log("this is the userData object", userData);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    setIsUpdating(true);
+    setUserData({
+      username: userData.username,
+      password: userData.password,
+      firstName: userData.password,
+      email: userData.email,
+      emailNotifications: userData.emailNotifications,
+      country: userData.country,
+      bio: userData.bio,
+    });
+  };
 
   // get user info
   useEffect(() => {
@@ -50,11 +64,6 @@ function EditProfile(props) {
     }
   }, [isUpdating, userData, userId]);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    setIsUpdating(true);
-  };
-
   const handleChanges = e => {
     setUserData({
       ...userData,
@@ -62,22 +71,73 @@ function EditProfile(props) {
     });
   };
 
+  console.log(userData);
+
   return (
     <Container style={{ minHeight: "80vh" }}>
       <Form onSubmit={handleSubmit} style={{ margin: "40px" }}>
         <Form.Group widths="equal">
-          <Form.Input fluid placeholder="Username" />
-          <Form.Input fluid placeholder="Password" type="password" />
-          <Form.Input fluid placeholder="First name" />
-          <Form.Input fluid placeholder="Last name" />
+          <Form.Input
+            fluid
+            name="username"
+            placeholder="Username"
+            onChange={handleChanges}
+            value={userData.username}
+          />
+          <Form.Input
+            fluid
+            name="password"
+            placeholder="Password"
+            type="password"
+            onChange={handleChanges}
+            value={userData.password}
+          />
+          <Form.Input
+            fluid
+            name="firstName"
+            placeholder="First name"
+            onChange={handleChanges}
+            value={userData.firstName}
+          />
+          <Form.Input
+            fluid
+            name="lastName"
+            placeholder="Last name"
+            onChange={handleChanges}
+            value={userData.lastName}
+          />
         </Form.Group>
-        <Form.TextArea placeholder="Tell us more about you..." />
+        <Form.TextArea
+          name="bio"
+          placeholder="Tell us more about you..."
+          onChange={handleChanges}
+          value={userData.bio}
+        />
         <Form.Group widths="equal">
-          <Form.Input fluid placeholder="Country" />
-          <Form.Input fluid placeholder="Email" type="email" />
+          <Form.Input
+            fluid
+            name="country"
+            placeholder="Country"
+            onChange={handleChanges}
+            value={userData.country}
+          />
+          <Form.Input
+            fluid
+            name="email"
+            placeholder="Email"
+            type="email"
+            onChange={handleChanges}
+            value={userData.email}
+          />
         </Form.Group>
         <Form.Group widths="equal">
-          <Form.Checkbox toggle label="Email notifications" />
+          <Form.Checkbox
+            name="emailNotifications"
+            toggle
+            label="Email notifications"
+            onChange={handleChanges}
+            value={userData.emailNotifications}
+          />
         </Form.Group>
         <Form.Button>Update</Form.Button>
       </Form>

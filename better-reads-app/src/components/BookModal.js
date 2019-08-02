@@ -2,20 +2,20 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Header, Dimmer, Loader, Icon } from "semantic-ui-react";
 
-const BookModal = ({ ISBN }) => {
+const BookModal = ({ isbn }) => {
   const [book, addBook] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    if (ISBN) {
+    if (isbn) {
       Axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=isbn:${ISBN}`,
+        `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`,
       ).then(data => {
         console.log(data);
         addBook(data.data.items[0].volumeInfo);
         setIsLoading(false);
       });
     }
-  }, [ISBN]);
+  }, [isbn]);
 
   return isLoading ? (
     <Dimmer inverted active>
