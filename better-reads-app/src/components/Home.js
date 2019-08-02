@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Input,
-  Form,
-  Image,
-  Dimmer,
-  Loader,
-  Icon,
-} from "semantic-ui-react";
+import { Button, Input, Form, Image, Dimmer, Loader } from "semantic-ui-react";
 
 import styled from "styled-components";
 
@@ -93,8 +85,9 @@ function Home({
             maxWidth: "550px",
             lineHeight: "1.6em",
           }}>
-          <h1>Search for books</h1>Describe your perfect novel and let us find
-          the best books for you. 
+          <h1>Search for books</h1>
+<p>Describe your perfect novel and let us find
+          the best books for you.</p>
         </div>
       </Wrapper>
       <Form onSubmit={handleSubmit}>

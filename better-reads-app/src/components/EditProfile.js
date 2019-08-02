@@ -21,8 +21,7 @@ function EditProfile(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setIsUpdating(true);
-    setUserData({
+    const updatedData = {
       username: userData.username,
       password: userData.password,
       firstName: userData.password,
@@ -30,6 +29,15 @@ function EditProfile(props) {
       emailNotifications: userData.emailNotifications,
       country: userData.country,
       bio: userData.bio,
+    };
+    setUserData(updatedData);
+    setIsUpdating(true);
+  };
+
+  const toggleCheckbox = e => {
+    setUserData({
+      ...userData,
+      emailNotifications: !userData.emailNotifications,
     });
   };
 
@@ -50,6 +58,7 @@ function EditProfile(props) {
   // update user info
   useEffect(() => {
     if (isUpdating) {
+      console.log(userData)
       axiosWithAuth()
         .put(
           `https://better-reads-db.herokuapp.com/api/users/${userId}`,
@@ -134,8 +143,9 @@ function EditProfile(props) {
           <Form.Checkbox
             name="emailNotifications"
             toggle
+            checked={userData.emailNotifications}
             label="Email notifications"
-            onChange={handleChanges}
+            onClick={toggleCheckbox}
             value={userData.emailNotifications}
           />
         </Form.Group>

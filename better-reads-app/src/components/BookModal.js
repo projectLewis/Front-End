@@ -3,7 +3,7 @@ import Axios from "axios";
 import { Header, Dimmer, Loader, Icon } from "semantic-ui-react";
 
 const BookModal = ({ isbn }) => {
-  const [book, addBook] = useState([]);
+  const [book, setBook] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [foundStatus, setFoundStatus] = useState(null);
   useEffect(() => {
@@ -13,7 +13,7 @@ const BookModal = ({ isbn }) => {
         `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`,
       ).then(data => {
         console.log(data);
-        addBook(data.data.items[0].volumeInfo);
+        setBook(data.data.items[0].volumeInfo);
         setFoundStatus(true);
         setIsLoading(false);
       }).catch(err => {
@@ -50,7 +50,7 @@ const BookModal = ({ isbn }) => {
       <a href={`https://www.goodreads.com/search?q=${isbn}`}
       style={{ display: "table-cell" }}
       target="_blank">
-        <Icon className="goodreads g" color="light-brown" />
+        <Icon className="goodreads g" color="yellow" />
       </a>
 
       <a href={`https://www.amazon.com/s?k=${isbn}&i=stripbooks&ref=nb_sb_noss`}
